@@ -15,3 +15,8 @@ export const hotelCategoryOptions = [
     { value: 5, label: "5 tärni" },
     { value: 6, label: "--Kõik--" },
 ]
+
+
+export const DefaultCity="Tallin"
+export const DefaultCountry="Türgi"
+
