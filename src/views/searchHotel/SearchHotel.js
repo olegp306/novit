@@ -6,7 +6,12 @@ import Input from '../../components/input/Input';
 import Select from '../../components/select';
 import Range from '../../components/range';
 
-export default function SearchHotel({ departureCityOptions, countryProposalOptions, calendarOptions }) {
+export default function SearchHotel({
+    despatureCityOptions,
+    countryProposalOptions,
+    calendarOptionsOptions,
+    foodOptions,
+    hotelCategoryOptions }) {
     return (
         <Form>
             <div class="row">
@@ -14,14 +19,16 @@ export default function SearchHotel({ departureCityOptions, countryProposalOptio
                     <Select
                         name="departureCity"
                         label="Lähtepunkt"
-                        options={[{ value: 1, label: "one" }, { value: 2, label: "two" }]}
+                        // options={[{ value: 1, label: "one" }, { value: 2, label: "two" }]}
+                        options={despatureCityOptions}
                     />
                 </div>
                 <div class="col-6">
                     <Select
                         name="countryProposal"
                         label="Sihtriik"
-                        options={[{ value: 1, label: "one" }, { value: 2, label: "two" }]}
+                        // options={[{ value: 1, label: "one" }, { value: 2, label: "two" }]}
+                        options={countryProposalOptions}
                     />
                 </div>
                 <div class="col">
@@ -36,7 +43,7 @@ export default function SearchHotel({ departureCityOptions, countryProposalOptio
             <Input
                 name="calendar"
                 label="Kuupäev"
-                options={[{ value: 1, label: "one" }, { value: 2, label: "two" }]}
+                options={calendarOptionsOptions}
             />
 
             <Checkbox
@@ -52,28 +59,13 @@ export default function SearchHotel({ departureCityOptions, countryProposalOptio
             <Select
                 name="hotelCategory"
                 label="Hotelli kategooria"
-                options={[
-                    { value: 1, label: "1 tärn" },
-                    { value: 2, label: "2 tärni" },
-                    { value: 3, label: "3 tärni" },
-                    { value: 4, label: "4 tärni" },
-                    { value: 5, label: "5 tärni" },
-                    { value: 6, label: "--Kõik--" },
-                ]}
+                options={hotelCategoryOptions}
             />
 
             <Select
                 name="food"
                 label="Toitlustus:"
-                options={[
-                    { value: "AI", label: "Kõik hinnas" },
-                    { value: "BB", label: "Hommikusöögiga" },
-                    { value: "FB", label: "Hommiku-, lõuna ja õhtusöögiga" },
-                    { value: "HB", label: "Hommiku- ja õhtusöögiga" },
-                    { value: "RO", label: "Söökideta" },
-                    { value: "UAI", label: "Kõik hinnas +" },
-
-                ]}
+                options={foodOptions}
             />
             <Range
                 name="pricePerAdult"
