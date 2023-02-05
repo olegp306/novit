@@ -1,11 +1,12 @@
 import React from 'react'
 import { Form } from 'react-bootstrap'
 
-export default function Input({name,value,placeholder}) {
+export default function Input({ name, label, children, ...rest }) {
     return (
-        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-            <Form.Label>Email address</Form.Label>
-            <Form.Control type="email" placeholder="name@example.com" />
+        <Form.Group className="mb-3">
+            <Form.Label>{label}</Form.Label>
+            <Form.Control name={name} {...rest} />
+            {children}
         </Form.Group>
     )
 }
