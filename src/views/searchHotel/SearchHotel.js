@@ -6,24 +6,32 @@ import Input from '../../components/input/Input';
 import Select from '../../components/select';
 import Range from '../../components/range';
 
-export default function SearchHotel() {
+export default function SearchHotel({ departureCityOptions, countryProposalOptions, calendarOptions }) {
     return (
         <Form>
-            <Select
-                name="departureCity"
-                label="Lähtepunkt"
-                options={[{ value: 1, label: "one" }, { value: 2, label: "two" }]}
-            />
-            <Select
-                name="countryProponsal"
-                label="Sihtriik"
-                options={[{ value: 1, label: "one" }, { value: 2, label: "two" }]}
-            />
-            <Select
-                name="departureCity"
-                label="Linn"
-                options={[{ value: 1, label: "one" }, { value: 2, label: "two" }]}
-            />
+            <div class="row">
+                <div class="col">
+                    <Select
+                        name="departureCity"
+                        label="Lähtepunkt"
+                        options={[{ value: 1, label: "one" }, { value: 2, label: "two" }]}
+                    />
+                </div>
+                <div class="col-6">
+                    <Select
+                        name="countryProposal"
+                        label="Sihtriik"
+                        options={[{ value: 1, label: "one" }, { value: 2, label: "two" }]}
+                    />
+                </div>
+                <div class="col">
+                    <Select
+                        name="departureCity"
+                        label="Linn"
+                        options={[{ value: 1, label: "one" }, { value: 2, label: "two" }]}
+                    />
+                </div>
+            </div>
 
             <Input
                 name="calendar"
@@ -35,6 +43,7 @@ export default function SearchHotel() {
                 name="isFlex"
                 label=" +/- 7 päeva"
             />
+
             <Range
                 name="daysQuantity"
                 label="Ööde arv:">
@@ -68,18 +77,18 @@ export default function SearchHotel() {
             />
             <Range
                 name="pricePerAdult"
-                label="Hind 1 täiskasvanu kohta:"              
-                >
+                label="Hind 1 täiskasvanu kohta:"
+            >
             </Range>
 
             <Select
                 name="searchHotelName"
-                label="Hotelli nimi:"                
+                label="Hotelli nimi:"
             />
-            
+
 
             <Button variant="primary" type="submit">
-                Submit
+                OTSI REISI
             </Button>
         </Form>
     )
