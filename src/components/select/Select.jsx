@@ -1,18 +1,15 @@
 import React from "react";
-import cn from "classnames/bind";
+import { Form } from "react-bootstrap";
 
-const Select = ({ label, name, className, options, ...rest }) => {
+const Select = ({ label, name, className, options, description, ...rest }) => {
   return (
-    <div className={s.selectWrapper}>
-      <span className={s.label}>{label}</span>
-      <select name={name} id={name} className={cn(s.select, className)} {...rest}>
-        {options &&
-          options.map(option => {
-            const { value, label } = option;
-            return <option value={value}>{label}</option>;
-          })}
-      </select>
-    </div>
+    <Form.Group className="mb-3" >
+      <Form.Label>{label}</Form.Label>
+      <Form.Select {...rest}>
+        {options && options.map(o => <option value={o.value}>{o.label}</option>)}
+      </Form.Select>
+      <Form.Text className="text-muted">{description}</Form.Text>
+    </Form.Group>
   );
 };
 

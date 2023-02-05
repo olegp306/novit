@@ -6,12 +6,25 @@ import Select from '../../components/select';
 export default function SearchHotel() {
     return (
         <Form>
-            <Select label="departureCity" options={[{ key: 1, value: "one" }, { key: 2, value: "two" }]} />
-            <Select label="countryProponsal" options={[{ key: 1, value: "one" }, { key: 2, value: "two" }]} />
-            <Select label="areaProponsal" options={[{ key: 1, value: "one" }, { key: 2, value: "two" }]} />
+            <Select
+                name="departureCity"
+                label="Lähtepunkt"
+                options={[{ value: 1, label: "one" }, { value: 2, label: "two" }]}
+            />
+            <Select
+                name="countryProponsal"
+                label="Sihtriik"
+                options={[{ value: 1, label: "one" }, { value: 2, label: "two" }]}
+            />
+            <Select
+                name="departureCity"
+                label="Linn"
+                options={[{ value: 1, label: "one" }, { value: 2, label: "two" }]}
+            />
+           
 
 
-            <Select label="areaProponsal" options={[{ key: 1, value: "one" }, { key: 2, value: "two" }]} />
+            <Select name="areaProponsal" options={[{ value: 1, label: "one" }, { value: 2, label: "two" }]} />
 
 
 
