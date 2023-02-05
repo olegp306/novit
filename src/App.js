@@ -4,7 +4,7 @@ import SearchHotel from './views/searchHotel/SearchHotel';
 function App() {
   return (
     <div className="container">
-      <h1>novit</h1>
+      <h1>Novit.ee</h1>
       <SearchHotel/>
     </div>
   );
