@@ -1,0 +1,19 @@
+.checkboxWrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-bottom: 10px;
+  width: 250px;
+  cursor: pointer;
+}
+
+.unselectable {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+}
+
+
+.checkboxLabel{
+  width: 200px;
+  padding-left: 5px;
+}
