@@ -18,3 +18,5 @@ const fetchDataAsync = async ({ url, params }) => {
 }
 
 export const  fetchCalendar = async ({ params }) => fetchDataAsync({ url: fetchCalendarUrl, params })
+
+export const  fetchCity = async ({ params }) => fetchDataAsync({ url: fetchCalendarUrl, params })
