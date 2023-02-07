@@ -11,7 +11,8 @@ export default function SearchHotel({
     countryProposalOptions,
     calendarOptionsOptions,
     foodOptions,
-    hotelCategoryOptions }) {
+    hotelCategoryOptions
+ }) {
     return (
         <Form>
             <div class="form">
@@ -20,7 +21,6 @@ export default function SearchHotel({
                         <Select
                             name="departureCity"
                             label="Lähtepunkt"
-                            // options={[{ value: 1, label: "one" }, { value: 2, label: "two" }]}
                             options={despatureCityOptions}
                         />
                     </div>

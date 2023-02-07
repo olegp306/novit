@@ -1,11 +1,11 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import SearchHotel from './views/searchHotel/SearchHotel';
+import SearchHotelContainer from './views/searchHotel/SearchHotelContainer';
 
 function App() {
   return (
     <div className="container">
       <h1>Novit.ee</h1>
-      <SearchHotel/>
+      <SearchHotelContainer/>
     </div>
   );
 }

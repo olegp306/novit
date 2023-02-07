@@ -1,9 +1,10 @@
-import React from 'react'
-import { DefaultCity, DefaultCountry } from './constans'
+import React, { useEffect, useState } from 'react'
+import { fetchCalendar } from '../../api'
+import { DefaultCity, DefaultCountry, foodOptions, hotelCategoryOptions } from './constans'
 import SearchHotel from './SearchHotel'
 
 export default function SearchHotelContainer() {
-    const [despatureCityOptions, setDespatureCityOptions] = useState(null)
+    const [despatureCityOptions, setDespatureCityOptions] = useState(["Tallin"])
     const [countryProposalOptions, setCountryProposalOptions] = useState(null)
     const [calendarOptions, setCalendarOptions] = useState(null)
 
@@ -18,13 +19,10 @@ export default function SearchHotelContainer() {
                 dcity: depatureCity,
                 country: country
             })
-        const data =  fetchCalendarAsync();
-        setCalendarOptions=data;
-
-
-
+        const data = fetchCalendarAsync();
+        setCalendarOptions(data);
         return () => {
-            second
+            // second
         }
     }, [country, depatureCity])
 

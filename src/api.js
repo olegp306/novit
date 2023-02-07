@@ -17,4 +17,4 @@ const fetchDataAsync = async ({ url, params }) => {
     }
 }
 
-const fetchCalendar = async ({ params }) => fetchDataAsync({ url: fetchCalendarUrl, params })
+export const  fetchCalendar = async ({ params }) => fetchDataAsync({ url: fetchCalendarUrl, params })
