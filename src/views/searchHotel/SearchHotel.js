@@ -8,13 +8,14 @@ import Range from '../../components/range';
 
 export default function SearchHotel({
     despatureCityOptions,
-    countryProposalOptions,
+    countryOptions,
     calendarOptionsOptions,
     foodOptions,
     hotelCategoryOptions
  }) {
     return (
         <Form>
+            
             <div class="form">
                 <div class="row">
                     <div class="col">
@@ -29,7 +30,7 @@ export default function SearchHotel({
                             name="country"
                             label="Sihtriik"
                             // options={[{ value: 1, label: "one" }, { value: 2, label: "two" }]}
-                            options={countryProposalOptions}
+                            options={countryOptions}
                         />
                     </div>
                     <div class="col">
