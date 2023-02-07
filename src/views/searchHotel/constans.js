@@ -17,6 +17,27 @@ export const hotelCategoryOptions = [
 ]
 
 
-export const DefaultCity="Tallin"
-export const DefaultCountry="Türgi"
+export const countries = [
+    "AÜE",
+    "Bulgaaria",
+    "Egiptus",
+    "Hispaania",
+    "Indoneesia",
+    "Itaalia",
+    "Kreeka",
+    "Kuuba",
+    "Maldiivid",
+    "Maroko",
+    "Montenegro",
+    "Montenegro-Horvaatia",
+    "Portugal",
+    "Sri Lanka",
+    "Tai",
+    "Tuneesia",
+    "Türgi"
+]
+
+
+export const DefaultCity = "Tallin"
+export const DefaultCountry = "Türgi"
 
