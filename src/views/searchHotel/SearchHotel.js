@@ -2,9 +2,9 @@ import React from 'react'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Checkbox from '../../components/checkbox/Checkbox';
-import Input from '../../components/input/Input';
 import Select from '../../components/select';
-import Range from '../../components/range';
+import Calendar from '../../components/calendar/Calendar';
+import NumberRange from '../../components/numberRange/NumberRange';
 
 export default function SearchHotel({
     despatureCityOptions,
@@ -12,26 +12,21 @@ export default function SearchHotel({
     calendarOptionsOptions,
     foodOptions,
     hotelCategoryOptions
- }) {
+}) {
     return (
         <Form>
-            
             <div class="form">
+                <div class="col">
+                    <Select name="departureCity"
+                        label="Lähtepunkt"
+                        options={despatureCityOptions}
+                        value={despatureCityOptions[0]}
+                        disabled
+                    />
+                </div>
                 <div class="row">
-                    <div class="col">
-                        <Select
-                            name="departureCity"
-                            label="Lähtepunkt"
-                            options={despatureCityOptions}
-                        />
-                    </div>
                     <div class="col-6">
-                        <Select
-                            name="country"
-                            label="Sihtriik"
-                            // options={[{ value: 1, label: "one" }, { value: 2, label: "two" }]}
-                            options={countryOptions}
-                        />
+                        <Select name="country" label="Sihtriik" options={countryOptions} />
                     </div>
                     <div class="col">
                         <Select
@@ -42,21 +37,19 @@ export default function SearchHotel({
                     </div>
                 </div>
 
-                <Input
-                    name="calendar"
-                    label="Kuupäev"
-                    options={calendarOptionsOptions}
-                />
+                <div class="row">
+                    <div class="col-6">
+                        <Calendar name="calendar" label="Kuupäev" options={calendarOptionsOptions} />
+                    </div>
 
-                <Checkbox
-                    name="isFlex"
-                    label=" +/- 7 päeva"
-                />
+                    <Checkbox
+                        name="isFlex"
+                        label=" +/- 7 päeva"
+                    />
+                </div>
 
-                <Range
-                    name="daysQuantity"
-                    label="Ööde arv:">
-                </Range>
+
+                <NumberRange name="daysQuantity" start={5} end={12} />
 
                 <Select
                     name="hotelCategory"
@@ -69,21 +62,22 @@ export default function SearchHotel({
                     label="Toitlustus:"
                     options={foodOptions}
                 />
-                <Range
-                    name="pricePerAdult"
-                    label="Hind 1 täiskasvanu kohta:"
-                >
-                </Range>
+
+
+                <NumberRange name="pricePerAdult" label="Hind 1 täiskasvanu kohta:"
+                />
 
                 <Select
                     name="searchHotelName"
                     label="Hotelli nimi:"
                 />
 
+                <div className="d-grid gap-2">
+                    <Button variant="primary" size="lg">
+                        OTSI REISI
+                    </Button>
 
-                <Button variant="primary" type="submit">
-                    OTSI REISI
-                </Button>
+                </div>
 
             </div>
         </Form>
