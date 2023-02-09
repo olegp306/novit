@@ -5,6 +5,7 @@ import Checkbox from '../../components/checkbox/Checkbox';
 import Input from '../../components/input/Input';
 import Select from '../../components/select';
 import Range from '../../components/range';
+import InputNumber from '../../components/inputNumber/InputNumber';
 
 export default function SearchHotel({
     despatureCityOptions,
@@ -12,10 +13,10 @@ export default function SearchHotel({
     calendarOptionsOptions,
     foodOptions,
     hotelCategoryOptions
- }) {
+}) {
     return (
         <Form>
-            
+
             <div class="form">
                 <div class="row">
                     <div class="col">
@@ -69,6 +70,8 @@ export default function SearchHotel({
                     label="Toitlustus:"
                     options={foodOptions}
                 />
+
+                <InputNumber />
                 <Range
                     name="pricePerAdult"
                     label="Hind 1 täiskasvanu kohta:"
