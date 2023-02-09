@@ -6,6 +6,8 @@ import Input from '../../components/input/Input';
 import Select from '../../components/select';
 import Range from '../../components/range';
 import InputNumber from '../../components/inputNumber/InputNumber';
+import Calendar from '../../components/calendar/Calendar';
+import NumberRange from '../../components/numberRange/NumberRange';
 
 export default function SearchHotel({
     despatureCityOptions,
@@ -16,16 +18,16 @@ export default function SearchHotel({
 }) {
     return (
         <Form>
-
             <div class="form">
+                <div class="col">
+                    <Select name="departureCity"
+                        label="Lähtepunkt"
+                        options={despatureCityOptions}
+                        value={despatureCityOptions[0]}
+                        disabled
+                    />
+                </div>
                 <div class="row">
-                    <div class="col">
-                        <Select
-                            name="departureCity"
-                            label="Lähtepunkt"
-                            options={despatureCityOptions}
-                        />
-                    </div>
                     <div class="col-6">
                         <Select
                             name="country"
@@ -42,22 +44,16 @@ export default function SearchHotel({
                         />
                     </div>
                 </div>
+       
 
-                <Input
-                    name="calendar"
-                    label="Kuupäev"
-                    options={calendarOptionsOptions}
-                />
+                <Calendar name="calendar" label="Kuupäev" options={calendarOptionsOptions} />
 
                 <Checkbox
                     name="isFlex"
                     label=" +/- 7 päeva"
                 />
 
-                <Range
-                    name="daysQuantity"
-                    label="Ööde arv:">
-                </Range>
+                <NumberRange name="daysQuantity" start={5} end={12} />
 
                 <Select
                     name="hotelCategory"
@@ -71,22 +67,21 @@ export default function SearchHotel({
                     options={foodOptions}
                 />
 
-                <InputNumber />
-                <Range
-                    name="pricePerAdult"
-                    label="Hind 1 täiskasvanu kohta:"
-                >
-                </Range>
+
+                <NumberRange name="pricePerAdult" label="Hind 1 täiskasvanu kohta:"
+                />
 
                 <Select
                     name="searchHotelName"
                     label="Hotelli nimi:"
                 />
 
+                <div className="d-grid gap-2">
+                    <Button variant="primary" size="lg">
+                        OTSI REISI
+                    </Button>
 
-                <Button variant="primary" type="submit">
-                    OTSI REISI
-                </Button>
+                </div>
 
             </div>
         </Form>

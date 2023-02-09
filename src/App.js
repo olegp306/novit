@@ -1,4 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-datepicker/dist//react-datepicker.css';
 import { Container } from 'react-bootstrap';
 import SearchHotelContainer from './views/searchHotel/SearchHotelContainer';
 
