@@ -40,36 +40,40 @@ export default function SearchHotel({
                 </div>
                 <div class="row">
                     <div class="col-6">
-                        <Select
-                            name="destinationCountry"
-                            label="Sihtriik"
-                            options={destinationCountryOptions}
-                            onChange={onChangeDestinationCountry}
+                        <Select name="destinationCountry" label="Sihtriik" options={destinationCountryOptions} onChange={onChangeDestinationCountry}
                             value={destinationCountry}
                         />
                     </div>
                     <div class="col">
-                        <Select
-                            name="destinationCity"
-                            label="Linn"
-                            options={destinationCityOptions}
-                            value={destinationCity}
+                        <Select name="destinationCity" label="Linn" options={destinationCityOptions} value={destinationCity}
                             onChange={onChangeDestinationCity}
                         />
                     </div>
                 </div>
 
-                <div style={{ display: "flex", justifyContent: "space-between" }}>
-                    <Calendar name="calendar" label="Kuupäev" inline highlightDates={calendarOptions} />
-                    <Checkbox name="isFlex" label=" +/- 7 päeva" />
-                    <RangeSlider value={[20, 37]} name="daysQuantity" start={5} end={12} label={"Ööde arv:"} />
+                {/* <div style={{ display: "flex", justifyContent: "space-between", justifyItems: "stretch" }}> */}
+                <div class="row">
+                    <div class="col" style={{display: "flex", justifyContent: "center", alignItems:"center"}}>
+                        <Calendar name="calendar" label="Kuupäev" inline highlightDates={calendarOptions} />
+                    </div>
+                    <div class="col">
+                        <RangeSlider value={[20, 37]} name="daysQuantity" start={5} end={12} label={"Ööde arv:"} />
+                        <RangeSlider value={[20, 37]} name="pricePerAdult" start={5} end={12} label="Hind 1 täiskasvanu kohta:" />
+                        <Checkbox name="isFlex" label=" +/- 7 päeva" />
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <Select name="hotelCategory" label="Hotelli kategooria" options={hotelCategoryOptions} />
+                    </div>
+                    <div class="col">
+                        <Select name="food" label="Toitlustus:" options={foodOptions} />
+                    </div>
                 </div>
 
-                <div style={{ display: "flex", justifyContent: "space-between" }}>
-                    <Select name="hotelCategory" label="Hotelli kategooria" options={hotelCategoryOptions} />
-                    <Select name="food" label="Toitlustus:" options={foodOptions} />
-                </div>
-                <RangeSlider value={[20, 37]} name="pricePerAdult" start={5} end={12} label="Hind 1 täiskasvanu kohta:" />
+
+
                 <Select name="searchHotelName" label="Hotelli nimi:" />
 
                 <div className="d-grid gap-2">
@@ -80,6 +84,6 @@ export default function SearchHotel({
                 </div>
 
             </div>
-        </Form>
+        </Form >
     )
 }

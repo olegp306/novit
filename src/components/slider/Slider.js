@@ -18,7 +18,7 @@ export default function RangeSlider({ label, value, onChange }) {
     return (
         <Form.Group className="mb-3">
             <Form.Label>{label}</Form.Label>
-            <Box sx={{ width: 300 }}>
+            <div styles={{ width: '100%' }}>
                 <Slider
                     getAriaLabel={() => 'Temperature range'}
                     value={value}
@@ -27,7 +27,7 @@ export default function RangeSlider({ label, value, onChange }) {
                     getAriaValueText={valuetext}
                 />
 
-            </Box>
+            </div>
         </Form.Group>
     );
 }
