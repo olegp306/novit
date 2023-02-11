@@ -8,8 +8,8 @@ const Select = ({ label, name, value, onChange, className, options, description,
   return (
     <Form.Group className="mb-3" >
       <Form.Label>{label}</Form.Label>
-      <Form.Control
-        as="select"
+      <Form.Select
+        // as="select"
         value={value}
         onChange={e => {
           console.log("e.target.value", e.target.value);
@@ -18,7 +18,7 @@ const Select = ({ label, name, value, onChange, className, options, description,
         {...rest}
       >
         {options && options.map(o => <option onClick={() => onChangeHandler(o?.label || o)} value={o?.value || o}>{o?.label || o}</option>)}
-      </Form.Control>
+      </Form.Select>
       <Form.Text className="text-muted">{description}</Form.Text>
     </Form.Group>
   );

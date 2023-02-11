@@ -6,16 +6,11 @@ import SearchHotelContainer from './views/searchHotel/SearchHotelContainer';
 function App() {
   return (
     <Container >
-      <a href="https://novit.ee/" class="mb-3" rel="home" aria-current="page">
+      <a href="https://novit.ee/" class="mb-2" rel="home" aria-current="page">
         <img width="250" height="83" src="https://novit.ee/wp-content/uploads/2022/09/cropped-logo2018.png" class="custom-logo" alt="Nov IT" />
       </a>
       <Container className="p-4 mb-4 bg-light rounded-3">
-
-        <div className="container">
-          {/* <h1>Novit.ee</h1> */}
-
           <SearchHotelContainer />
-        </div>
       </Container>
     </Container >
   );
