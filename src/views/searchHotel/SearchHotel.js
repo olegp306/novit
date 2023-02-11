@@ -43,7 +43,6 @@ export default function SearchHotel({
                         <Select
                             name="destinationCountry"
                             label="Sihtriik"
-                            // options={[{ value: 1, label: "one" }, { value: 2, label: "two" }]}
                             options={destinationCountryOptions}
                             onChange={onChangeDestinationCountry}
                             value={destinationCountry}
@@ -63,11 +62,13 @@ export default function SearchHotel({
                 <div style={{ display: "flex", justifyContent: "space-between" }}>
                     <Calendar name="calendar" label="Kuupäev" inline highlightDates={calendarOptions} />
                     <Checkbox name="isFlex" label=" +/- 7 päeva" />
-                    {/* <NumberRange/> */}
                     <RangeSlider value={[20, 37]} name="daysQuantity" start={5} end={12} label={"Ööde arv:"} />
                 </div>
-                <Select name="hotelCategory" label="Hotelli kategooria" options={hotelCategoryOptions} />
-                <Select name="food" label="Toitlustus:" options={foodOptions} />
+
+                <div style={{ display: "flex", justifyContent: "space-between" }}>
+                    <Select name="hotelCategory" label="Hotelli kategooria" options={hotelCategoryOptions} />
+                    <Select name="food" label="Toitlustus:" options={foodOptions} />
+                </div>
                 <RangeSlider value={[20, 37]} name="pricePerAdult" start={5} end={12} label="Hind 1 täiskasvanu kohta:" />
                 <Select name="searchHotelName" label="Hotelli nimi:" />
 
