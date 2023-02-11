@@ -21,16 +21,16 @@ export default function SearchHotelContainer() {
 
     useEffect(() => {
         fetchDestinationCountries()
-        .then(countries=>setDestinationCountryOptions(countries.map(i=>i.country)))    
-      return () => {        
-      }
+            .then(countries => setDestinationCountryOptions(countries.map(i => i.country)))
+        return () => {
+        }
     }, [])
-    
+
 
 
     useEffect(() => {
         fetchCity({ country: destinationCountry })
-            .then(cities => setDestinationCityOptions(cities.map(i=>i.city)))
+            .then(cities => setDestinationCityOptions(cities.map(i => i.city)))
         return () => {
 
         }
@@ -39,26 +39,30 @@ export default function SearchHotelContainer() {
 
     useEffect(() => {
         fetchCalendar({
-            dcity: depatureCity,
-            country: destinationCountry
+            country: destinationCountry,
+            departure: depatureCity,
+            city: destinationCity,
         }).then(data => setCalendarOptions(data.map((d) => {
             const ar = d.split(" ")
             const dateMMDDYYYY = `${ar[1]}.${ar[0]}.${ar[2]}`
 
             return new Date(dateMMDDYYYY);
 
-        }).slice(0, 4)))
+        })))
         return () => {
             // second
         }
-    }, [destinationCountry, depatureCity])
+    }, [destinationCity])
 
-    
+
     const onChangeDestinationCountry = (country) => {
-        console.log('onChangeCountry')
         setDestinationCountry(country)
     }
 
+    const onChangeDestinationCity = (city) => {
+        console.log('onChangeDestinationCity')
+        setDestinationCity(city)
+    }
 
     return (
         <SearchHotel
@@ -71,6 +75,7 @@ export default function SearchHotelContainer() {
 
             destinationCityOptions={destinationCityOptions}
             destinationCity={destinationCity}
+            onChangeDestinationCity={onChangeDestinationCity}
 
 
 

@@ -3,7 +3,7 @@ import testResponce from "./calendarResponce";
 
 
 const fetchDestinationCountriesUrl=`https://novit.ee/api/destinationCountry.php?option=allin`
-const fetchCalendarUrl = `https://novit.ee/api/calendarFilter.php?option=allin&country=T%C3%BCrgi&departure=Tallinn&city=Belek`
+const fetchCalendarUrl = `https://novit.ee/api/calendarFilter.php?option=allin`
 const fetchCitiesListUrl = `https://novit.ee/api/destinationCity.php?option=allin`
 
 const fetchDataAsync = async ({ url, params }) => {
@@ -23,7 +23,7 @@ const fetchDataAsync = async ({ url, params }) => {
 export const fetchDestinationCountries = async (params) => fetchDataAsync({ url: fetchDestinationCountriesUrl, params })
 
 
-export const fetchCalendar = async (params) => fetchDataAsync({ url: fetchCalendarUrl })
+export const fetchCalendar = async (params) => fetchDataAsync({ url: fetchCalendarUrl ,params})
 
 
 export const fetchCity = async (params) => fetchDataAsync({ url: fetchCitiesListUrl, params })

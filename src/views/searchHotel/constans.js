@@ -38,6 +38,6 @@ export const countries = [
 ]
 
 
-export const DefaultCity = "Tallin"
+export const DefaultCity = "Tallinn"
 export const DefaultCountry = "Türgi"
 

@@ -3,8 +3,9 @@ import { Button, Form, ListGroup } from 'react-bootstrap'
 
 export default function InputNumber({ name, label, value, onChange, children, ...rest }) {
     return (
-        <Form.Group>
-            <Form.Label>{label}</Form.Label>
+        // <Form.Group>
+        <>
+            {/* <Form.Label>{label}</Form.Label> */}
             <div style={{ display: 'flex', flexDirection: 'row', width: "150px" }}>
                 <Button
                     onClick={() => onChange(value - 1)}
@@ -43,6 +44,7 @@ export default function InputNumber({ name, label, value, onChange, children, ..
                 >+</Button>
                 {children}
             </div>
-        </Form.Group >
+        </>
+        // </Form.Group >
     )
 }

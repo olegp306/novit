@@ -20,6 +20,7 @@ export default function SearchHotel({
 
     destinationCityOptions,
     destinationCity,
+    onChangeDestinationCity,
 
     calendarOptions,
     foodOptions,
@@ -53,21 +54,17 @@ export default function SearchHotel({
                             label="Linn"
                             options={destinationCityOptions}
                             value={destinationCity}
+                            onChange={onChangeDestinationCity}
                         />
                     </div>
                 </div>
 
+                <div style={{ display: "flex" , justifyContent:"space-between"}}>
+                    <Calendar name="calendar" label="Kuupäev" inline highlightDates={calendarOptions} />
+                    <Checkbox name="isFlex" label=" +/- 7 päeva" />
+                    <NumberRange name="daysQuantity" start={5} end={12} />
+                </div>
 
-                <Calendar name="calendar" label="Kuupäev" highlightDates={calendarOptions} />
-                {/* <Calendar name="calendar" label="Kuupäev" highlightDates={["02.03.2023","02.17.2023"]} /> */}
-
-
-                <Checkbox
-                    name="isFlex"
-                    label=" +/- 7 päeva"
-                />
-
-                <NumberRange name="daysQuantity" start={5} end={12} />
 
                 <Select
                     name="hotelCategory"

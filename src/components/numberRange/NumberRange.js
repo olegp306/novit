@@ -23,9 +23,15 @@ export default function NumberRange({ start, end, label }) {
         <Form.Group className="mb-3">
             <Form.Label>{label}</Form.Label>
             <div style={{ display: "flex" }}>
-                from <InputNumber value={startNum} onChange={onChangeStartHandler} />
-                to  <InputNumber value={endNum} onChange={onChangeEndHandler} />
+                <div style={{ display: "flex", flexDirection: "column", justifyContent: "flex-start" }}>
+                    <div style={{ marginBottom: "0px" }}>from:</div>
+                    <InputNumber value={startNum} onChange={onChangeStartHandler} />
+                </div>
+                <div style={{ display: "flex", flexDirection: "column", justifyContent: "flex-start" }} >
+                    to < InputNumber value={endNum} onChange={onChangeEndHandler} />
             </div>
-        </Form.Group>
+
+        </div>
+        </Form.Group >
     )
 }
