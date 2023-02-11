@@ -1,78 +1,79 @@
 import React, { useEffect, useState } from 'react'
-import { fetchCalendar, testurl } from '../../api'
+import { fetchCalendar, fetchCity, fetchDestinationCountries, testurl } from '../../api'
 import { DefaultCity, DefaultCountry, foodOptions, countries, hotelCategoryOptions } from './constans'
 import SearchHotel from './SearchHotel'
 
 export default function SearchHotelContainer() {
     const [despatureCityOptions, setDespatureCityOptions] = useState(["Tallinn"])
-    const [countryOptions, setCountryOptions] = useState(countries)
-    const [calendarOptions, setCalendarOptions] = useState(null)
-
     const [depatureCity, setDepatureCity] = useState(DefaultCity)
-    const [arrivalCity, setArrivalCity] = useState("")
-    const [country, setCountry] = useState(DefaultCountry)
+
+
+    const [destinationCountryOptions, setDestinationCountryOptions] = useState(countries)
+    const [destinationCountry, setDestinationCountry] = useState(DefaultCountry)
+
+    const [destinationCityOptions, setDestinationCityOptions] = useState([])
+    const [destinationCity, setDestinationCity] = useState("")
+
+    const [calendarOptions, setCalendarOptions] = useState(null)
+    const [despatureDate, setDespatureDate] = useState(null)
 
 
 
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //       const response = await fetch(testurl);
-    //       const json = await response.json();
-
-    //       setCalendarOptions(json);
-    //     }
-
-    //     fetchData()
-    //       .catch(console.error);;
-    //   }, [])
+    useEffect(() => {
+        fetchDestinationCountries()
+        .then(countries=>setDestinationCountryOptions(countries.map(i=>i.country)))    
+      return () => {        
+      }
+    }, [])
+    
 
 
+    useEffect(() => {
+        fetchCity({ country: destinationCountry })
+            .then(cities => setDestinationCityOptions(cities.map(i=>i.city)))
+        return () => {
 
-    // useEffect(() => {
-    //     const fetchCalendarAsync = async () =>
-    //         await fetchCalendar({
-    //             dcity: depatureCity,
-    //             country: country
-    //         })
-    //     const data = fetchCalendarAsync();
-    //     setCalendarOptions(data);
-    //     return () => {
-    //         // second
-    //     }
-    // }, [country, depatureCity])
+        }
+    }, [destinationCountry])
+
 
     useEffect(() => {
         fetchCalendar({
             dcity: depatureCity,
-            country: country
+            country: destinationCountry
         }).then(data => setCalendarOptions(data.map((d) => {
             const ar = d.split(" ")
             const dateMMDDYYYY = `${ar[1]}.${ar[0]}.${ar[2]}`
-            
+
             return new Date(dateMMDDYYYY);
 
         }).slice(0, 4)))
         return () => {
             // second
         }
-    }, [country, depatureCity])
+    }, [destinationCountry, depatureCity])
 
-    useEffect(() => {
-        console.log("calendarOptions", calendarOptions);
-
-        return () => {
-
-        }
-    }, [calendarOptions])
-
+    
+    const onChangeDestinationCountry = (country) => {
+        console.log('onChangeCountry')
+        setDestinationCountry(country)
+    }
 
 
     return (
         <SearchHotel
             despatureCityOptions={despatureCityOptions}
             despatureCity={depatureCity}
-            countryOptions={countryOptions}
-            country={country}
+
+            destinationCountryOptions={destinationCountryOptions}
+            destinationCountry={destinationCountry}
+            onChangeDestinationCountry={onChangeDestinationCountry}
+
+            destinationCityOptions={destinationCityOptions}
+            destinationCity={destinationCity}
+
+
+
             calendarOptions={calendarOptions}
             foodOptions={foodOptions}
             hotelCategoryOptions={hotelCategoryOptions}

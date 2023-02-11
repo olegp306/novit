@@ -9,9 +9,18 @@ import InputNumber from '../../components/inputNumber/InputNumber';
 import Calendar from '../../components/calendar/Calendar';
 import NumberRange from '../../components/numberRange/NumberRange';
 
+
 export default function SearchHotel({
     despatureCityOptions,
-    countryOptions,
+    despatureCity,
+
+    destinationCountryOptions,
+    destinationCountry,
+    onChangeDestinationCountry,
+
+    destinationCityOptions,
+    destinationCity,
+
     calendarOptions,
     foodOptions,
     hotelCategoryOptions
@@ -23,29 +32,32 @@ export default function SearchHotel({
                     <Select name="departureCity"
                         label="Lähtepunkt"
                         options={despatureCityOptions}
-                        value={despatureCityOptions[0]}
+                        value={despatureCity}
                         disabled
                     />
                 </div>
                 <div class="row">
                     <div class="col-6">
                         <Select
-                            name="country"
+                            name="destinationCountry"
                             label="Sihtriik"
                             // options={[{ value: 1, label: "one" }, { value: 2, label: "two" }]}
-                            options={countryOptions}
+                            options={destinationCountryOptions}
+                            onChange={onChangeDestinationCountry}
+                            value={destinationCountry}
                         />
                     </div>
                     <div class="col">
                         <Select
-                            name="departureCity"
+                            name="destinationCity"
                             label="Linn"
-                            options={[{ value: 1, label: "one" }, { value: 2, label: "two" }]}
+                            options={destinationCityOptions}
+                            value={destinationCity}
                         />
                     </div>
                 </div>
-       
-                
+
+
                 <Calendar name="calendar" label="Kuupäev" highlightDates={calendarOptions} />
                 {/* <Calendar name="calendar" label="Kuupäev" highlightDates={["02.03.2023","02.17.2023"]} /> */}
 
