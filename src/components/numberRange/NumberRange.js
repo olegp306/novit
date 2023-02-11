@@ -21,7 +21,7 @@ export default function NumberRange({ start, end, label }) {
 
     return (
         <Form.Group className="mb-3">
-            <Form.Label>{label}</Form.Label>
+            <Form.Label className="mb-1">{label}</Form.Label>
             <div style={{ display: "flex" }}>
                 <div style={{ display: "flex", flexDirection: "column", justifyContent: "flex-start" }}>
                     <div style={{ marginBottom: "0px" }}>from:</div>

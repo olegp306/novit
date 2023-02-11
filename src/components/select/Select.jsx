@@ -7,7 +7,7 @@ const Select = ({ label, name, value, onChange, className, options, description,
   }
   return (
     <Form.Group className="mb-3" >
-      <Form.Label>{label}</Form.Label>
+      <Form.Label className="mb-1">{label}</Form.Label>
       <Form.Select
         // as="select"
         value={value}

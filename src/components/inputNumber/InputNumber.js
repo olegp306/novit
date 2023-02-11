@@ -5,7 +5,7 @@ export default function InputNumber({ name, label, value, onChange, children, ..
     return (
         // <Form.Group>
         <>
-            {/* <Form.Label>{label}</Form.Label> */}
+            {/* <Form.Label className="mb-1">{label}</Form.Label> */}
             <div style={{ display: 'flex', flexDirection: 'row', width: "150px" }}>
                 <Button
                     onClick={() => onChange(value - 1)}
