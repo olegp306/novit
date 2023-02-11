@@ -8,6 +8,7 @@ import Range from '../../components/range';
 import InputNumber from '../../components/inputNumber/InputNumber';
 import Calendar from '../../components/calendar/Calendar';
 import NumberRange from '../../components/numberRange/NumberRange';
+import RangeSlider from '../../components/slider/Slider';
 
 
 export default function SearchHotel({
@@ -59,33 +60,16 @@ export default function SearchHotel({
                     </div>
                 </div>
 
-                <div style={{ display: "flex" , justifyContent:"space-between"}}>
+                <div style={{ display: "flex", justifyContent: "space-between" }}>
                     <Calendar name="calendar" label="Kuupäev" inline highlightDates={calendarOptions} />
                     <Checkbox name="isFlex" label=" +/- 7 päeva" />
-                    <NumberRange name="daysQuantity" start={5} end={12} />
+                    {/* <NumberRange/> */}
+                    <RangeSlider value={[20, 37]} name="daysQuantity" start={5} end={12} label={"Ööde arv:"} />
                 </div>
-
-
-                <Select
-                    name="hotelCategory"
-                    label="Hotelli kategooria"
-                    options={hotelCategoryOptions}
-                />
-
-                <Select
-                    name="food"
-                    label="Toitlustus:"
-                    options={foodOptions}
-                />
-
-
-                <NumberRange name="pricePerAdult" label="Hind 1 täiskasvanu kohta:"
-                />
-
-                <Select
-                    name="searchHotelName"
-                    label="Hotelli nimi:"
-                />
+                <Select name="hotelCategory" label="Hotelli kategooria" options={hotelCategoryOptions} />
+                <Select name="food" label="Toitlustus:" options={foodOptions} />
+                <RangeSlider value={[20, 37]} name="pricePerAdult" start={5} end={12} label="Hind 1 täiskasvanu kohta:" />
+                <Select name="searchHotelName" label="Hotelli nimi:" />
 
                 <div className="d-grid gap-2">
                     <Button variant="primary" size="lg">
