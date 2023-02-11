@@ -12,7 +12,7 @@ import NumberRange from '../../components/numberRange/NumberRange';
 export default function SearchHotel({
     despatureCityOptions,
     countryOptions,
-    calendarOptionsOptions,
+    calendarOptions,
     foodOptions,
     hotelCategoryOptions
 }) {
@@ -45,8 +45,10 @@ export default function SearchHotel({
                     </div>
                 </div>
        
+                
+                <Calendar name="calendar" label="Kuupäev" highlightDates={calendarOptions} />
+                {/* <Calendar name="calendar" label="Kuupäev" highlightDates={["02.03.2023","02.17.2023"]} /> */}
 
-                <Calendar name="calendar" label="Kuupäev" options={calendarOptionsOptions} />
 
                 <Checkbox
                     name="isFlex"
