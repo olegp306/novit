@@ -12,7 +12,7 @@ export default function SearchHotelContainer() {
     const [destinationCountry, setDestinationCountry] = useState(DefaultCountry)
 
     const [destinationCityOptions, setDestinationCityOptions] = useState([])
-    const [destinationCity, setDestinationCity] = useState("")
+    const [destinationCity, setDestinationCity] = useState("Belek")
 
     const [calendarOptions, setCalendarOptions] = useState(null)
     const [despatureDate, setDespatureDate] = useState(null)
