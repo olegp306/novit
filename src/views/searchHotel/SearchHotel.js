@@ -59,8 +59,8 @@ export default function SearchHotel({
                         <Calendar name="calendar" label="Kuupäev" inline highlightDates={calendarOptions} />
                     </div>
                     <div class="col">
-                        <RangeSlider value={period} onChange={onChangePeriod} name="period" start={5} end={12} label={"Ööde arv:"} />
-                        <RangeSlider value={price}  onChange={onChangePrice} name="price" start={5} end={12} label="Hind 1 täiskasvanu kohta:" />
+                        <RangeSlider value={period} onChange={onChangePeriod} name="period" start={6} end={15} label={"Ööde arv:"} />
+                        <RangeSlider value={price}  onChange={onChangePrice} name="price" start={100} end={5000} step={50} label="Hind 1 täiskasvanu kohta:" />
                         <Checkbox name="isFlex" label=" +/- 7 päeva" />
 
                     </div>

@@ -17,8 +17,8 @@ export default function SearchHotelContainer() {
     const [calendarOptions, setCalendarOptions] = useState(null)
     const [despatureDate, setDespatureDate] = useState(null)
 
-    const [period, setPeriod] = useState([10, 14])
-    const [price, setPrice] = useState([50, 150])
+    const [period, setPeriod] = useState([6, 15])
+    const [price, setPrice] = useState([50, 150 ])
 
 
 
