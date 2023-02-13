@@ -16,10 +16,14 @@ export default function SearchHotelContainer() {
     const [destinationCity, setDestinationCity] = useState("Belek")
 
     const [calendarOptions, setCalendarOptions] = useState(null)
-    const [despatureDate, setDespatureDate] = useState(null)
+    const [departureDate, setDepartureDate] = useState(null)
+
 
     const [period, setPeriod] = useState([6, 15])
     const [price, setPrice] = useState([50, 150])
+
+    const [stars, setStars] = useState("")
+    const [food, setFood] = useState("")
 
 
 
@@ -78,9 +82,19 @@ export default function SearchHotelContainer() {
         setPeriod(period)
     }
 
+    const onChangeStars = (stars) => {
+        console.log('onChangeStars')
+        setStars(stars)
+    }
+
+    const onChangeFood = (food) => {
+        console.log('onChangeFood')
+        setFood(food)
+    }
+
     return (
         <>
-            {[depatureCity, destinationCountry, destinationCity, price, period]
+            {[depatureCity, destinationCountry, destinationCity, price, period, stars, food]
                 .map(i => <FilterMark value={i} label={i} key={i} />)}
             <SearchHotel
                 despatureCityOptions={despatureCityOptions}
@@ -103,6 +117,12 @@ export default function SearchHotelContainer() {
                 onChangePrice={onChangePrice}
                 period={period}
                 onChangePeriod={onChangePeriod}
+
+                stars={stars}
+                onChangeStars={onChangeStars}
+
+                food={food}
+                onChangeFood={onChangeFood}
             />
         </>
     )

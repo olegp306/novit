@@ -30,7 +30,13 @@ export default function SearchHotel({
     price,
     onChangePrice,
     period,
-    onChangePeriod
+    onChangePeriod,
+    
+    stars,
+    onChangeStars,
+
+    food,
+    onChangeFood
 }) {
     return (
         <Form>
@@ -67,10 +73,10 @@ export default function SearchHotel({
                 </div>
                 <div class="row">
                     <div class="col">
-                        <Select name="hotelCategory" label="Hotelli kategooria" options={hotelCategoryOptions} />
+                        <Select name="stars" value={stars} onChange={onChangeStars} label="Hotelli kategooria" options={hotelCategoryOptions} />
                     </div>
                     <div class="col">
-                        <Select name="food" label="Toitlustus:" options={foodOptions} />
+                        <Select name="food" value={food} onChange={onChangeFood} label="Toitlustus:" options={foodOptions} />
                     </div>
                 </div>
 
