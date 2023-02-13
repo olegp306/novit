@@ -7,7 +7,7 @@ function valuetext(value) {
     return `${value}°C`;
 }
 
-export default function RangeSlider({ label, value, onChange }) {
+export default function RangeSlider({ label, value, onChange, ...rest }) {
     // const [value, setValue] = React.useState(value);
 
     const handleChange = (event, newValue) => {
@@ -17,14 +17,15 @@ export default function RangeSlider({ label, value, onChange }) {
 
     return (
         <Form.Group className="mb-3">
-            <Form.Label className="mb-1">{label} <span style={{fontWeight:'600'}}>from: {value[0]} to: {value[1]} </span></Form.Label>
+            <Form.Label className="mb-1">{label} <span style={{ fontWeight: '600' }}>from: {value[0]} to: {value[1]} </span></Form.Label>
             <div styles={{ width: '100%' }}>
                 <Slider
                     // getAriaLabel={() => 'Temperature range'}
                     value={value}
                     onChange={handleChange}
                     valueLabelDisplay="auto"
-                    getAriaValueText={valuetext}                   
+                    getAriaValueText={valuetext}
+                    {...rest}
                 />
 
             </div>
