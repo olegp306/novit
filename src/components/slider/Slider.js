@@ -25,6 +25,7 @@ export default function RangeSlider({ label, value, onChange }) {
                     onChange={handleChange}
                     valueLabelDisplay="auto"
                     getAriaValueText={valuetext}
+                    valueLabelDisplay="on"
                 />
 
             </div>
