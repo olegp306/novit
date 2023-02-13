@@ -31,16 +31,14 @@ export default function SearchHotel({
         <Form>
             <div class="form">
                 <div class="col">
-                    <Select name="departureCity"
-                        label="Lähtepunkt"
-                        options={despatureCityOptions}
-                        value={despatureCity}
+                    <Select name="departureCity" label="Lähtepunkt" options={despatureCityOptions} value={despatureCity}
                         disabled
                     />
                 </div>
                 <div class="row">
                     <div class="col-6">
-                        <Select name="destinationCountry" label="Sihtriik" options={destinationCountryOptions} onChange={onChangeDestinationCountry}
+                        <Select name="destinationCountry" label="Sihtriik" options={destinationCountryOptions}
+                            onChange={onChangeDestinationCountry}
                             value={destinationCountry}
                         />
                     </div>
@@ -51,9 +49,8 @@ export default function SearchHotel({
                     </div>
                 </div>
 
-                {/* <div style={{ display: "flex", justifyContent: "space-between", justifyItems: "stretch" }}> */}
                 <div class="row">
-                    <div class="col" style={{display: "flex", justifyContent: "center", alignItems:"center"}}>
+                    <div class="col" style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
                         <Calendar name="calendar" label="Kuupäev" inline highlightDates={calendarOptions} />
                     </div>
                     <div class="col">
