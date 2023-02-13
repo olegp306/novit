@@ -17,6 +17,9 @@ export default function SearchHotelContainer() {
     const [calendarOptions, setCalendarOptions] = useState(null)
     const [despatureDate, setDespatureDate] = useState(null)
 
+    const [period, setPeriod] = useState([10, 14])
+    const [price, setPrice] = useState([50, 150])
+
 
 
     useEffect(() => {
@@ -64,6 +67,16 @@ export default function SearchHotelContainer() {
         setDestinationCity(city)
     }
 
+    const onChangePrice = (price) => {
+        console.log('onChangePrice')
+        setPrice(price)
+    }
+
+    const onChangePeriod = (period) => {
+        console.log('onChangePeriod')
+        setPeriod(period)
+    }
+
     return (
         <SearchHotel
             despatureCityOptions={despatureCityOptions}
@@ -82,6 +95,11 @@ export default function SearchHotelContainer() {
             calendarOptions={calendarOptions}
             foodOptions={foodOptions}
             hotelCategoryOptions={hotelCategoryOptions}
+
+            price={price}
+            onChangePrice={onChangePrice}
+            period={period}
+            onChangePeriod={onChangePeriod}
         />
     )
 }

@@ -25,7 +25,12 @@ export default function SearchHotel({
 
     calendarOptions,
     foodOptions,
-    hotelCategoryOptions
+    hotelCategoryOptions,
+
+    price,
+    onChangePrice,
+    period,
+    onChangePeriod
 }) {
     return (
         <Form>
@@ -54,8 +59,8 @@ export default function SearchHotel({
                         <Calendar name="calendar" label="Kuupäev" inline highlightDates={calendarOptions} />
                     </div>
                     <div class="col">
-                        <RangeSlider value={[20, 37]} name="daysQuantity" start={5} end={12} label={"Ööde arv:"} />
-                        <RangeSlider value={[20, 37]} name="pricePerAdult" start={5} end={12} label="Hind 1 täiskasvanu kohta:" />
+                        <RangeSlider value={period} onChange={onChangePeriod} name="period" start={5} end={12} label={"Ööde arv:"} />
+                        <RangeSlider value={price}  onChange={onChangePrice} name="price" start={5} end={12} label="Hind 1 täiskasvanu kohta:" />
                         <Checkbox name="isFlex" label=" +/- 7 päeva" />
 
                     </div>

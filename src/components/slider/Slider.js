@@ -17,13 +17,13 @@ export default function RangeSlider({ label, value, onChange }) {
 
     return (
         <Form.Group className="mb-3">
-            <Form.Label className="mb-1">{label}</Form.Label>
+            <Form.Label className="mb-1">{label} from: {value[0]} to: {value[1]} </Form.Label>
             <div styles={{ width: '100%' }}>
                 <Slider
                     getAriaLabel={() => 'Temperature range'}
                     value={value}
                     onChange={handleChange}
-                    valueLabelDisplay="on"
+                    valueLabelDisplay="auto"
                     getAriaValueText={valuetext}                   
                 />
 
