@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { fetchCalendar, fetchCity, fetchDestinationCountries, testurl } from '../../api'
+import FilterMark from '../../components/filterMark/FilterMark'
 import { DefaultCity, DefaultCountry, foodOptions, countries, hotelCategoryOptions } from './constans'
 import SearchHotel from './SearchHotel'
 
@@ -18,7 +19,7 @@ export default function SearchHotelContainer() {
     const [despatureDate, setDespatureDate] = useState(null)
 
     const [period, setPeriod] = useState([6, 15])
-    const [price, setPrice] = useState([50, 150 ])
+    const [price, setPrice] = useState([50, 150])
 
 
 
@@ -78,28 +79,31 @@ export default function SearchHotelContainer() {
     }
 
     return (
-        <SearchHotel
-            despatureCityOptions={despatureCityOptions}
-            despatureCity={depatureCity}
+        <>
+            {[depatureCity, destinationCountry, destinationCity, price, period]
+                .map(i => <FilterMark value={i} label={i} key={i} />)}
+            <SearchHotel
+                despatureCityOptions={despatureCityOptions}
+                despatureCity={depatureCity}
 
-            destinationCountryOptions={destinationCountryOptions}
-            destinationCountry={destinationCountry}
-            onChangeDestinationCountry={onChangeDestinationCountry}
+                destinationCountryOptions={destinationCountryOptions}
+                destinationCountry={destinationCountry}
+                onChangeDestinationCountry={onChangeDestinationCountry}
 
-            destinationCityOptions={destinationCityOptions}
-            destinationCity={destinationCity}
-            onChangeDestinationCity={onChangeDestinationCity}
+                destinationCityOptions={destinationCityOptions}
+                destinationCity={destinationCity}
+                onChangeDestinationCity={onChangeDestinationCity}
 
 
+                calendarOptions={calendarOptions}
+                foodOptions={foodOptions}
+                hotelCategoryOptions={hotelCategoryOptions}
 
-            calendarOptions={calendarOptions}
-            foodOptions={foodOptions}
-            hotelCategoryOptions={hotelCategoryOptions}
-
-            price={price}
-            onChangePrice={onChangePrice}
-            period={period}
-            onChangePeriod={onChangePeriod}
-        />
+                price={price}
+                onChangePrice={onChangePrice}
+                period={period}
+                onChangePeriod={onChangePeriod}
+            />
+        </>
     )
 }
