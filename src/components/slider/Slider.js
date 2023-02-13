@@ -23,9 +23,8 @@ export default function RangeSlider({ label, value, onChange }) {
                     getAriaLabel={() => 'Temperature range'}
                     value={value}
                     onChange={handleChange}
-                    valueLabelDisplay="auto"
-                    getAriaValueText={valuetext}
                     valueLabelDisplay="on"
+                    getAriaValueText={valuetext}                   
                 />
 
             </div>
