@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { fetchCalendar, fetchCity, fetchDestinationCountries, testurl } from '../../api'
+import { fetchCalendar, fetchCities, fetchDestinationCountries, fetchHotels, testurl } from '../../api'
 import FilterMark from '../../components/filterMark/FilterMark'
 import { DefaultCity, DefaultCountry, foodOptions, countries, hotelCategoryOptions } from './constans'
 import SearchHotel from './SearchHotel'
@@ -25,6 +25,9 @@ export default function SearchHotelContainer() {
     const [stars, setStars] = useState("")
     const [food, setFood] = useState("")
 
+    const [hotelOptions, setHotelOptions] = useState([])
+    const [hotel, setHotel] = useState("")
+
 
 
     useEffect(() => {
@@ -37,7 +40,7 @@ export default function SearchHotelContainer() {
 
 
     useEffect(() => {
-        fetchCity({ country: destinationCountry })
+        fetchCities({ country: destinationCountry })
             .then(cities => setDestinationCityOptions(cities.map(i => i.city)))
         return () => {
 
@@ -61,6 +64,15 @@ export default function SearchHotelContainer() {
             // second
         }
     }, [destinationCity])
+
+    useEffect(() => {
+        fetchHotels({ country: destinationCountry, city: destinationCity, stars, hotel_name: hotel })
+        .then(hotels => setHotelOptions(hotels))
+        return () => {
+            // second
+        }
+    }, [hotel])
+
 
 
     const onChangeDestinationCountry = (country) => {
@@ -91,6 +103,14 @@ export default function SearchHotelContainer() {
         console.log('onChangeFood')
         setFood(food)
     }
+
+    const onChangeHotel = (str) => {
+        console.log('onChangeHotel')
+        setHotel(str)
+    }
+
+
+
 
     return (
         <>
@@ -123,6 +143,10 @@ export default function SearchHotelContainer() {
 
                 food={food}
                 onChangeFood={onChangeFood}
+
+                hotelOptions={hotelOptions}
+                hotel={hotel}
+                onChangeHotel={onChangeHotel}
             />
         </>
     )

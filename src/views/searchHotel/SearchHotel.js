@@ -31,12 +31,16 @@ export default function SearchHotel({
     onChangePrice,
     period,
     onChangePeriod,
-    
+
     stars,
     onChangeStars,
 
     food,
-    onChangeFood
+    onChangeFood,
+
+    hotelOptions,
+    hotel,
+    onChangeHotel
 }) {
     return (
         <Form>
@@ -80,9 +84,16 @@ export default function SearchHotel({
                     </div>
                 </div>
 
+                <Form.Group>
+                    <Form.Label>{"Hotelli nimi:"}</Form.Label>
+                    <Form.Control as="input" value={hotel} onChange={e => { onChangeHotel(e.target.value) }} autocomplete="on"
+                        renderItem={hotelOptions && hotelOptions.map(o => <option onClick={() => onChangeHotel(o?.label || o)} value={o?.value || o}>{o?.label || o}</option>)}
+                    >
+                    </Form.Control>
+                    <Form.Text className="text-muted">{""}</Form.Text>
+                </Form.Group>
 
-
-                <Select name="searchHotelName" label="Hotelli nimi:" />
+                {/* <Input as="select" name="hotel" value={hotel} label="Hotelli nimi:" options={hotelOptions} onChange={onChangeHotel} /> */}
 
                 <div className="d-grid gap-2">
                     <Button variant="primary" size="lg">

@@ -24,12 +24,11 @@ const fetchDataAsync = async ({ url, params }) => {
 
 export const fetchDestinationCountries = async (params) => fetchDataAsync({ url: fetchDestinationCountriesUrl, params })
 
-
 export const fetchCalendar = async (params) => fetchDataAsync({ url: fetchCalendarUrl, params })
 
-export const fetchCity = async (params) => fetchDataAsync({ url: fetchCitiesListUrl, params })
+export const fetchCities = async (params) => fetchDataAsync({ url: fetchCitiesListUrl, params })
 
-export const fetchHotels = fetchDataAsync({ url: fetchHotelsUrl, params })
+export const fetchHotels = async (params) => fetchDataAsync({ url: fetchHotelsUrl, params })
 
 export const fetchOffers = async (params) => fetchDataAsync({ url: fetchOffersUrl, params })
 
