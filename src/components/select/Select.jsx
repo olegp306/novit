@@ -3,14 +3,7 @@ import { Form } from "react-bootstrap";
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 
 const Select = ({ label, name, value, onChange, className, options, description, addChooseAllOption, ...rest }) => {
-
-
-  if (addChooseAllOption) {
-    options.push(addChooseAllOption)
-  }
-
-
-  return (
+   return (
     <Form.Group className="mb-3" >
       <FloatingLabel
         controlId={value}
@@ -26,6 +19,7 @@ const Select = ({ label, name, value, onChange, className, options, description,
           {...rest}
         >
           {options && options.map(o => <option>{o?.label || o}</option>)}
+          {addChooseAllOption && <option value={addChooseAllOption.value}>{addChooseAllOption.label}</option> }
         </Form.Select>
       </FloatingLabel>
       <Form.Text className="text-muted">{description}</Form.Text>
