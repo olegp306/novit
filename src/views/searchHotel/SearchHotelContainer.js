@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Button } from 'react-bootstrap'
 import { fetchCalendar, fetchCities, fetchDestinationCountries, fetchHotels, fetchOffers, testurl } from '../../api'
 import FilterMark from '../../components/filterMark/FilterMark'
+import Offers from '../../components/offers/Offers'
 import { DefaultCity, DefaultCountry, foodOptions, countries, hotelCategoryOptions } from './constans'
 import SearchHotel from './SearchHotel'
 
@@ -30,6 +31,8 @@ export default function SearchHotelContainer() {
     const [hotel, setHotel] = useState("")
 
     const [days, setDays] = useState("")
+
+    const [offers, setOffers] = useState([])
 
 
 
@@ -138,7 +141,10 @@ export default function SearchHotelContainer() {
             })
 
 
-        fetchOffers(params)
+        fetchOffers(params).then(data => {
+            console.log("fetchOffers", data)
+            setOffers(data)
+        })
     }
 
 
@@ -184,6 +190,9 @@ export default function SearchHotelContainer() {
                 </Button>
 
             </div>
+            
+            <h1>offers</h1>
+            <Offers tableData={offers} />
 
         </>
     )
