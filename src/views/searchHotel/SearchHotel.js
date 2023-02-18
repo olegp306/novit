@@ -11,6 +11,7 @@ import NumberRange from '../../components/numberRange/NumberRange';
 import RangeSlider from '../../components/slider/Slider';
 import { AsyncTypeahead, Typeahead } from 'react-bootstrap-typeahead';
 import { FloatingLabel } from 'react-bootstrap';
+import AutoComplete from '../../components/autoComplete/AutoComplete';
 
 
 export default function SearchHotel({
@@ -44,6 +45,7 @@ export default function SearchHotel({
     hotel,
     onChangeHotel
 }) {
+    const filterBy = () => true;
     return (
         <Form>
             <div class="form">
@@ -64,7 +66,7 @@ export default function SearchHotel({
                             options={destinationCityOptions}
                             value={destinationCity}
                             onChange={onChangeDestinationCity}
-                            addChooseAllOption={{ value: "*", label: "--Kõik--" }}
+                            addChooseAllOption={{ value: "--Kõik--", label: "--Kõik--" }}
                         />
                     </div>
                 </div>
@@ -88,7 +90,7 @@ export default function SearchHotel({
                             onChange={onChangeStars}
                             label="Hotelli kategooria"
                             options={hotelCategoryOptions}
-                            addChooseAllOption={{ value: "*", label: "--Kõik--" }}
+
                         />
                     </div>
                     <div class="col">
@@ -104,23 +106,14 @@ export default function SearchHotel({
                     </Form.Control>
                     <Form.Text className="text-muted">{""}</Form.Text>
                 </Form.Group> */}
-                <Form.Group className="mb-3" >
-                    <Form.Label>Hotelli nimi</Form.Label>
-                    <AsyncTypeahead
-                        // filterBy={true}
-                        id="async-example"
-                        // isLoading={isLoading}
-                        // labelKey="name"
-                        minLength={1}
-                        onSearch={onChangeHotel}
-                        options={hotelOptions}
-                        // options={["AQUAWORLD BELEK", "INNVISTA HOTELS BELEK", "LYKIA WORLD ANTALYA", "SHERWOOD DREAMS RESORT", "LYKIA WORLD LINKS GOLF HOTEL", "CESARS TEMPLE DELUXE HOTEL", "CESARS TEMPLE DE LUXE HOTEL", "AYDINBEY QUEENS PALACE & SPA", "KIRMAN BELAZUR RESORT & SPA", "CRYSTAL PARAISO VERDE RESORT & SPA", "AYDINBEY FAMOUS RESORT", "GREEN MAX HOTEL", "LIMAK ARCADIA SPORT RESORT", "CRYSTAL WATERWORLD RESORT & SPA", "PALOMA GRIDA", "CRYSTAL FAMILY RESORT & SPA", "ORANGE COUNTY BELEK", "IC HOTELS SANTAI FAMILY RESORT", "LIMAK ATLANTIS DE LUXE HOTEL & RESORT", "CRYSTAL TAT BEACH GOLF RESORT & SPA", "PORT NATURE LUXURY RESORT HOTEL & SPA", "KAYA BELEK", "CRYSTAL TAT BEACH GOLF RESORT", "KIRMAN HOTELS BELAZUR RESORT & SPA", "ADORA RESORT"].map(h => ({ name: h }))}
-                        placeholder="Search for a hotels..."
-                        renderMenuItemChildren={(option) => (<span>{option}</span>)}
-                    />
-                </Form.Group>
+                <AutoComplete
+                    value={hotel}
+                    label={"Hotelli nimi:"}
+                    searchParams={{ country: destinationCountry, city: destinationCity, stars, hotel_name: hotel }}
+                    onChange={onChangeHotel}
+                />
 
-                {/* <Input as="select" name="hotel" value={hotel} label="Hotelli nimi:" options={hotelOptions} onChange={onChangeHotel} /> */}
+                              {/* <Input as="select" name="hotel" value={hotel} label="Hotelli nimi:" options={hotelOptions} onChange={onChangeHotel} /> */}
 
                 <div className="d-grid gap-2">
                     <Button variant="primary" size="lg">
