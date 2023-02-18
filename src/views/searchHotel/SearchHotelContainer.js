@@ -108,36 +108,24 @@ export default function SearchHotelContainer() {
     }
 
     const onChangeHotel = (hotel) => {
-        console.log('onChangeHotel',hotel)
+        console.log('onChangeHotel', hotel)
         setHotel(hotel)
     }
 
     const searchOfferHandler = () => {
-        // departure_city *
-        //     country *
-        //     city
-        // departure_date
-        // days
-
-        // period
-        // stars
-        // hotel_name
-        // price
-        // room_pansion
-        // limit
-        // last_id
         const params = {
-            depatureCity,
-            country:destinationCountry,
-            city:destinationCity,
+            //to rename
+            departure_city: depatureCity,
+            country: destinationCountry,
+            city: destinationCity,
             // departure_date: departureDate,
-            departure_date: "05.04.2023",
+            // departure_date: "05.04.2023",
 
-            days:"yes",
+            days: "yes",
             // period,
             stars,
             hotel_name: hotel,
-            price: price,
+            price: `${price[0]}-${price[1]}`,
             // room_pansion,
             limit: 10,
             // unique
@@ -145,7 +133,7 @@ export default function SearchHotelContainer() {
         fetchOffers(params)
             .then(offers => {
                 console.log("offers", offers)
-                   setHotelOptions(offers)
+                setHotelOptions(offers)
                 // setIsLoading(false);
             })
 
