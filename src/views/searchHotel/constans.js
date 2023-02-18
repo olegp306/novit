@@ -13,7 +13,7 @@ export const hotelCategoryOptions = [
     { value: 3, label: "3 tärni" },
     { value: 4, label: "4 tärni" },
     { value: 5, label: "5 tärni" },
-    { value: 6, label: "--Kõik--" },
+    { value: "*", label: "--Kõik--" },
 ]
 
 
