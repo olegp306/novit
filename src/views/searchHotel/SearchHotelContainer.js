@@ -156,8 +156,8 @@ export default function SearchHotelContainer() {
 
     return (
         <>
-            {[depatureCity, destinationCountry, destinationCity, price, period, stars, food]
-                .map(i => <FilterMark value={i} label={i} key={i} />)}
+            {/* {[depatureCity, destinationCountry, destinationCity, price, period, stars, food]
+                .map(i => <FilterMark value={i} label={i} key={i} />)} */}
             <SearchHotel
                 despatureCityOptions={despatureCityOptions}
                 despatureCity={depatureCity}
