@@ -22,7 +22,7 @@ export default function SearchHotelContainer() {
     const [period, setPeriod] = useState([6, 15])
     const [price, setPrice] = useState([50, 150])
 
-    const [stars, setStars] = useState("")
+    const [stars, setStars] = useState("*")
     const [food, setFood] = useState("")
 
     const [hotelOptions, setHotelOptions] = useState([])
@@ -67,7 +67,7 @@ export default function SearchHotelContainer() {
 
     useEffect(() => {
         fetchHotels({ country: destinationCountry, city: destinationCity, stars, hotel_name: hotel })
-        .then(hotels => setHotelOptions(hotels))
+            .then(hotels => setHotelOptions(hotels))
         return () => {
             // second
         }
