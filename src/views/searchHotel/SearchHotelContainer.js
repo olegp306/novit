@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { fetchCalendar, fetchCities, fetchDestinationCountries, fetchHotels, testurl } from '../../api'
+import { Button } from 'react-bootstrap'
+import { fetchCalendar, fetchCities, fetchDestinationCountries, fetchHotels, fetchOffers, testurl } from '../../api'
 import FilterMark from '../../components/filterMark/FilterMark'
 import { DefaultCity, DefaultCountry, foodOptions, countries, hotelCategoryOptions } from './constans'
 import SearchHotel from './SearchHotel'
@@ -27,6 +28,8 @@ export default function SearchHotelContainer() {
 
     const [hotelOptions, setHotelOptions] = useState([])
     const [hotel, setHotel] = useState("")
+
+    const [days, setDays] = useState("")
 
 
 
@@ -104,9 +107,50 @@ export default function SearchHotelContainer() {
         setFood(food)
     }
 
-    const onChangeHotel = (str) => {
-        console.log('onChangeHotel')
-        setHotel(str)
+    const onChangeHotel = (hotel) => {
+        console.log('onChangeHotel',hotel)
+        setHotel(hotel)
+    }
+
+    const searchOfferHandler = () => {
+        // departure_city *
+        //     country *
+        //     city
+        // departure_date
+        // days
+
+        // period
+        // stars
+        // hotel_name
+        // price
+        // room_pansion
+        // limit
+        // last_id
+        const params = {
+            depatureCity,
+            country:destinationCountry,
+            city:destinationCity,
+            // departure_date: departureDate,
+            departure_date: "05.04.2023",
+
+            days,
+            // period,
+            stars,
+            hotel_name: hotel,
+            price: price,
+            // room_pansion,
+            limit: 10,
+            // unique
+        }
+        fetchOffers(params)
+            .then(offers => {
+                console.log("offers", offers)
+                   setHotelOptions(offers)
+                // setIsLoading(false);
+            })
+
+
+        fetchOffers(params)
     }
 
 
@@ -146,6 +190,13 @@ export default function SearchHotelContainer() {
                 hotel={hotel}
                 onChangeHotel={onChangeHotel}
             />
+            <div className="d-grid gap-2">
+                <Button variant="primary" size="lg" onClick={searchOfferHandler}>
+                    OTSI REISI
+                </Button>
+
+            </div>
+
         </>
     )
 }

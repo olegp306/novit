@@ -112,16 +112,6 @@ export default function SearchHotel({
                     searchParams={{ country: destinationCountry, city: destinationCity, stars, hotel_name: hotel }}
                     onChange={onChangeHotel}
                 />
-
-                              {/* <Input as="select" name="hotel" value={hotel} label="Hotelli nimi:" options={hotelOptions} onChange={onChangeHotel} /> */}
-
-                <div className="d-grid gap-2">
-                    <Button variant="primary" size="lg">
-                        OTSI REISI
-                    </Button>
-
-                </div>
-
             </div>
         </Form >
     )
