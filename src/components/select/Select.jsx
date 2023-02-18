@@ -18,7 +18,7 @@ const Select = ({ label, name, value, onChange, className, options, description,
           }}
           {...rest}
         >
-          {options && options.map(o => <option>{o?.label || o}</option>)}
+          {options && options.map(o => <option  value={o?.value || o}>{o?.label || o}</option>)}
           {addChooseAllOption && <option value={addChooseAllOption.value}>{addChooseAllOption.label}</option> }
         </Form.Select>
       </FloatingLabel>
