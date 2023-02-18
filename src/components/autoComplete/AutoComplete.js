@@ -21,10 +21,6 @@ export default function AutoComplete({ value, label, onChange, searchParams }) {
                 setHotelOptions(Object.keys(hotels).map(k => ({ value: k, name: hotels[k] })))
                 setIsLoading(false);
             })
-
-        // console.log("fetchHotels", Object.keys(k => ({ value: k, name: hotels[k] })))
-
-
     };
 
 
@@ -40,7 +36,7 @@ export default function AutoComplete({ value, label, onChange, searchParams }) {
                 labelKey="name"
                 minLength={1}
                 onSearch={handleSearch}
-                onChange={(hotel) => onChange(hotel.name)}
+                onChange={(hotel) => onChange(hotel[0].name)}
                 value={value}
 
                 options={hotelOptions}
