@@ -133,7 +133,7 @@ export default function SearchHotelContainer() {
             // departure_date: departureDate,
             departure_date: "05.04.2023",
 
-            days,
+            days:"yes",
             // period,
             stars,
             hotel_name: hotel,
