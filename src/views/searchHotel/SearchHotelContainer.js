@@ -90,6 +90,12 @@ export default function SearchHotelContainer() {
         setDestinationCity(city)
     }
 
+    
+    const onChangeDepartureDate = (date) => {
+        console.log('onChangeDepartureDate')
+        setDepartureDate(date)
+    }
+
     const onChangePrice = (price) => {
         console.log('onChangePrice')
         setPrice(price)
@@ -150,8 +156,7 @@ export default function SearchHotelContainer() {
 
     return (
         <>
-            {/* {[depatureCity, destinationCountry, destinationCity, price, period, stars, food]
-                .map(i => <FilterMark value={i} label={i} key={i} />)} */}
+          
             <SearchHotel
                 despatureCityOptions={despatureCityOptions}
                 despatureCity={depatureCity}
@@ -164,13 +169,17 @@ export default function SearchHotelContainer() {
                 destinationCity={destinationCity}
                 onChangeDestinationCity={onChangeDestinationCity}
 
-
                 calendarOptions={calendarOptions}
+                onChangeDepartureDate={onChangeDepartureDate}
+                departureDate={departureDate}
+
                 foodOptions={foodOptions}
+
 
                 price={price}
                 onChangePrice={onChangePrice}
                 period={period}
+
                 onChangePeriod={onChangePeriod}
 
                 hotelCategoryOptions={hotelCategoryOptions}
@@ -190,7 +199,7 @@ export default function SearchHotelContainer() {
                 </Button>
 
             </div>
-            
+
             <h1>offers</h1>
             <Offers tableData={offers} />
 

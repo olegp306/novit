@@ -27,6 +27,9 @@ export default function SearchHotel({
     onChangeDestinationCity,
 
     calendarOptions,
+    departureDate,
+    onChangeDepartureDate,
+
     foodOptions,
 
     price,
@@ -73,7 +76,7 @@ export default function SearchHotel({
 
                 <div class="row">
                     <div class="col" style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-                        <Calendar name="calendar" label="Kuupäev" inline highlightDates={calendarOptions} />
+                        <Calendar value={departureDate} onChange={onChangeDepartureDate} name="calendar" label="Kuupäev" inline highlightDates={calendarOptions} />
                     </div>
                     <div class="col">
                         <RangeSlider value={period} onChange={onChangePeriod} name="period" start={6} end={15} min={1} max={30} marks label={"Ööde arv:"} />
