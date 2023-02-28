@@ -30,6 +30,9 @@ export default function SearchHotel({
     departureDate,
     onChangeDepartureDate,
 
+    days,
+    onChangeDays,
+
     foodOptions,
 
     price,
@@ -79,9 +82,9 @@ export default function SearchHotel({
                         <Calendar value={departureDate} onChange={onChangeDepartureDate} name="calendar" label="Kuupäev" inline highlightDates={calendarOptions} />
                     </div>
                     <div class="col">
+                        <Checkbox value={days} onChange={onChangeDays} name="days" label=" +/- 7 päeva" />
                         <RangeSlider value={period} onChange={onChangePeriod} name="period" start={6} end={15} min={1} max={30} marks label={"Ööde arv:"} />
                         <RangeSlider value={price} onChange={onChangePrice} name="price" start={50} end={150} min={0} max={1000} step={100} marks label="Hind 1 täiskasvanu kohta:" />
-                        <Checkbox name="isFlex" label=" +/- 7 päeva" />
 
                     </div>
                 </div>

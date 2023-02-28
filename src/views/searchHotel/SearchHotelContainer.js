@@ -31,7 +31,7 @@ export default function SearchHotelContainer() {
     const [hotelOptions, setHotelOptions] = useState([])
     const [hotel, setHotel] = useState("")
 
-    const [days, setDays] = useState("")
+    const [days, setDays] = useState(false)
 
     const [offers, setOffers] = useState([])
 
@@ -122,12 +122,17 @@ export default function SearchHotelContainer() {
         setHotel(hotel)
     }
 
+    const onChangeDays = () => {
+        console.log('onChangeDays', !days)
+        setDays(!days)
+    }
+
     const getUrlWithParams = () => ({
         departure_city: depatureCity,
         country: destinationCountry,
         city: destinationCity,
         departure_date: departureDate?.toLocaleDateString("en-US"),
-        days: "yes",
+        days: days,
         period: `${period[0]}-${period[1]}`,
         stars,
         hotel_name: hotel,
@@ -174,6 +179,9 @@ export default function SearchHotelContainer() {
                 calendarOptions={calendarOptions}
                 onChangeDepartureDate={onChangeDepartureDate}
                 departureDate={departureDate}
+
+                days={days}
+                onChangeDays={onChangeDays}
 
                 foodOptions={foodOptions}
 
