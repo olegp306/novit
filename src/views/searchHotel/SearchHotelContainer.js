@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Button } from 'react-bootstrap'
 import { fetchCalendar, fetchCities, fetchDestinationCountries, fetchHotels, fetchOffers, testurl } from '../../api'
 import FilterMark from '../../components/filterMark/FilterMark'
+import FilterWidget from '../../components/filterWidget/FilterWidget'
 import Offers from '../../components/offers/Offers'
 import { DefaultCity, DefaultCountry, foodOptions, countries, hotelCategoryOptions } from './constans'
 import SearchHotel from './SearchHotel'
@@ -90,7 +91,7 @@ export default function SearchHotelContainer() {
         setDestinationCity(city)
     }
 
-    
+
     const onChangeDepartureDate = (date) => {
         console.log('onChangeDepartureDate')
         setDepartureDate(date)
@@ -121,24 +122,23 @@ export default function SearchHotelContainer() {
         setHotel(hotel)
     }
 
-    const searchOfferHandler = () => {
-        const params = {
-            //to rename
-            departure_city: depatureCity,
-            country: destinationCountry,
-            city: destinationCity,
-            // departure_date: departureDate,
-            // departure_date: "05.04.2023",
+    const getUrlWithParams = () => ({
+        departure_city: depatureCity,
+        country: destinationCountry,
+        city: destinationCity,
+        departure_date: departureDate?.toLocaleDateString("en-US"),
+        days: "yes",
+        period: `${period[0]}-${period[1]}`,
+        stars,
+        hotel_name: hotel,
+        price: `${price[0]}-${price[1]}`,
+        // room_pansion,
+        limit: 10,
+        // unique
+    })
 
-            days: "yes",
-            // period,
-            stars,
-            hotel_name: hotel,
-            price: `${price[0]}-${price[1]}`,
-            // room_pansion,
-            limit: 10,
-            // unique
-        }
+    const searchOfferHandler = () => {
+        const params = getUrlWithParams()
         fetchOffers(params)
             .then(offers => {
                 console.log("offers", offers)
@@ -156,7 +156,9 @@ export default function SearchHotelContainer() {
 
     return (
         <>
-          
+            {/* // [depatureCity, destinationCountry, destinationCity, price, period, stars, food] */}
+            тут
+            <FilterWidget paramsArr={Object.keys(getUrlWithParams()).map(key => ({ value: getUrlWithParams()[key], label: key }))} />
             <SearchHotel
                 despatureCityOptions={despatureCityOptions}
                 despatureCity={depatureCity}

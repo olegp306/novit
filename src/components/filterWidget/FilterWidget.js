@@ -1,13 +1,13 @@
 import React from 'react'
+import FilterMark from '../filterMark/FilterMark'
 
 
-[depatureCity, destinationCountry, destinationCity, price, period, stars, food]
+
 export default function FilterWidget({ paramsArr }) {
-    return (
-        <div>
-            {
-                paramsArr.map(i => <FilterMark value={i.value} label={i.label} key={i.value} />)}
-
-        </div>
+    paramsArr.map(i =>
+        <FilterMark value={i.value} label={i.label} key={i.value} />
+    )
+    paramsArr.map(i =>
+        <span> {i.value}{i.label} </span>
     )
 }
