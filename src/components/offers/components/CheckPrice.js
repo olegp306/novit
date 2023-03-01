@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Button } from 'react-bootstrap'
 import { fetchActualPrice } from '../../../api'
+import Spinner from '../../spinner/Spinner'
 
 export default function CheckPrice({ reis_id, adults = 1, children = 0 }) {
     const [isFetching, setIsFetching] = useState(false)
@@ -22,12 +23,7 @@ export default function CheckPrice({ reis_id, adults = 1, children = 0 }) {
     }
 
     if (isFetching) {
-        return (
-            <>
-                <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
-                <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
-                <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
-            </>)
+        return <Spinner />
     }
 
     return (
