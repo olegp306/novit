@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
 import { Form } from 'react-bootstrap';
-import { AsyncTypeahead } from 'react-bootstrap-typeahead';
+import { AsyncTypeahead, Highlighter } from 'react-bootstrap-typeahead';
 import { fetchHotels } from '../../api';
 
 export default function AutoComplete({ value, label, onChange, searchParams, ...rest }) {
@@ -36,14 +36,23 @@ export default function AutoComplete({ value, label, onChange, searchParams, ...
                 labelKey="name"
                 minLength={1}
                 onSearch={handleSearch}
-                onChange={(hotel) => onChange(hotel[0].name)}
+                onChange={(hotel) => onChange(hotel[0]?.name)}
                 value={value}
 
                 options={hotelOptions}
-                // options={["AQUAWORLD BELEK", "INNVISTA HOTELS BELEK", "LYKIA WORLD ANTALYA", "SHERWOOD DREAMS RESORT", "LYKIA WORLD LINKS GOLF HOTEL", "CESARS TEMPLE DELUXE HOTEL", "CESARS TEMPLE DE LUXE HOTEL", "AYDINBEY QUEENS PALACE & SPA", "KIRMAN BELAZUR RESORT & SPA", "CRYSTAL PARAISO VERDE RESORT & SPA", "AYDINBEY FAMOUS RESORT", "GREEN MAX HOTEL", "LIMAK ARCADIA SPORT RESORT", "CRYSTAL WATERWORLD RESORT & SPA", "PALOMA GRIDA", "CRYSTAL FAMILY RESORT & SPA", "ORANGE COUNTY BELEK", "IC HOTELS SANTAI FAMILY RESORT", "LIMAK ATLANTIS DE LUXE HOTEL & RESORT", "CRYSTAL TAT BEACH GOLF RESORT & SPA", "PORT NATURE LUXURY RESORT HOTEL & SPA", "KAYA BELEK", "CRYSTAL TAT BEACH GOLF RESORT", "KIRMAN HOTELS BELAZUR RESORT & SPA", "ADORA RESORT"].map(h => ({ name: h }))}
                 placeholder="Search for a hotels..."
-                renderMenuItemChildren={(option) =>
-                    (<span key={option.value}>{option.name} {value}</span>)}
+
+                 renderMenuItemChildren={(option, props, idx) => (
+                     <Highlighter search={props.text}>
+                       {option[props.labelKey]}
+                     </Highlighter>
+                   )}
+
+                // renderMenuItemChildren={(option,props) =>
+                // (<Highlighter
+                //     search={props?.text}
+                //     key={option.value}>{option.name} {value}</Highlighter>)}
+                    
                 {...rest}
             />
         </Form.Group>
