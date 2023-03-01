@@ -22,7 +22,7 @@ const columns =
 
     ]
 
-export default function Offers({ tableData, departureDate, adults, children }) {
+export default function Offers({ tableData, departureDate, adults, children, isOffersFetching }) {
 
 
     if (!tableData.length > 0) {
@@ -30,11 +30,12 @@ export default function Offers({ tableData, departureDate, adults, children }) {
     }
 
     const prepareTableData = (data) =>
-        data.map(({ hotel_id, reis_id, duration, ...rest }) => ({
+        data.map(({ hotel_id, reis_id, duration, price, ...rest }) => ({
             URLcheapestOffer: `https://novit.ee/hotell/?hotel_id=${hotel_id}`,
             URLofferWithPriceAndDates: `https://novit.ee/hotell/?hotel_id=${hotel_id}&departure_date=${departureDate}&duration=${duration}`,
             ReisUrl: `https://novit.ee/otsing/paring/?reis_id=${reis_id}`,
             checkprice: { reis_id, adults, children },
+            price: price * adults,
             ...rest
 
         }))
