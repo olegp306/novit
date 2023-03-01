@@ -4,6 +4,7 @@ import { fetchCalendar, fetchCities, fetchDestinationCountries, fetchHotels, fet
 import FilterMark from '../../components/filterMark/FilterMark'
 import FilterWidget from '../../components/filterWidget/FilterWidget'
 import Offers from '../../components/offers/Offers'
+import Select from '../../components/select/Select'
 import { DefaultCity, DefaultCountry, foodOptions, countries, hotelCategoryOptions } from './constans'
 import SearchHotel from './SearchHotel'
 
@@ -32,6 +33,11 @@ export default function SearchHotelContainer() {
     const [hotel, setHotel] = useState("")
 
     const [days, setDays] = useState(false)
+
+
+    const [children, setChildren] = useState(0)
+
+    const [adults, setAdults] = useState(2)
 
     const [offers, setOffers] = useState([])
 
@@ -203,6 +209,25 @@ export default function SearchHotelContainer() {
                 hotel={hotel}
                 onChangeHotel={onChangeHotel}
             />
+
+
+            {/* adults, children  */}
+            <div class="row">
+                <div class="col">
+                    <Select name="adults" label="Täiskasvanute arv: " options={[0, 1, 2, 3, 4, 5]}
+                        onChange={setAdults}
+                        value={adults}
+                    />
+                </div>
+                <div class="col">
+                    <Select name="children" label="Laste arv:"
+                        options={[0, 1, 2, 3, 4, 5]}
+                        value={children}
+                        onChange={setChildren}
+                    />
+                </div>
+            </div>
+
             <div className="d-grid gap-2">
                 <Button variant="primary" size="lg" onClick={searchOfferHandler}>
                     OTSI REISI
@@ -210,8 +235,9 @@ export default function SearchHotelContainer() {
 
             </div>
 
+
             <h1>offers</h1>
-            <Offers tableData={offers}  departureDate={departureDate} />
+            <Offers tableData={offers} departureDate={departureDate} adults={adults} children={children}/>
 
         </>
     )
