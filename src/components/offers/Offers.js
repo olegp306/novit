@@ -1,5 +1,6 @@
 import React from 'react'
 import { Table } from 'react-bootstrap'
+import CheckPrice from './components/CheckPrice'
 
 
 const columns =
@@ -10,7 +11,8 @@ const columns =
         { value: "room_pansion", label: "Toitlustus" },
         { value: "duration", label: "Ööde arv" },
         { value: "price", label: "Hind" },
-        { value: "checkprice", label: "checkprice" },
+
+        { value: "checkprice", label: "checkprice", type: "checkprice" },
         { value: "room_type", label: "Toatüüp" },
 
         { value: "URLcheapestOffer", label: "URL (kõige odavam pakkumine)", type: "link" },
@@ -20,18 +22,21 @@ const columns =
 
     ]
 
-export default function Offers({ tableData, departureDate }) {
+export default function Offers({ tableData, departureDate, adults, children }) {
+
+
     if (!tableData.length > 0) {
-        return <>her</>
+        return <>no data found</>
     }
-    <a href="/hotell?hotel_id=63c4054fe0b325031384c4ad">Kleopatra Aytur Suit Otel</a>
 
     const prepareTableData = (data) =>
         data.map(({ hotel_id, reis_id, duration, ...rest }) => ({
             URLcheapestOffer: `https://novit.ee/hotell/?hotel_id=${hotel_id}`,
             URLofferWithPriceAndDates: `https://novit.ee/hotell/?hotel_id=${hotel_id}&departure_date=${departureDate}&duration=${duration}`,
             ReisUrl: `https://novit.ee/otsing/paring/?reis_id=${reis_id}`,
+            checkprice: { reis_id, adults, children },
             ...rest
+
         }))
 
 
@@ -41,6 +46,8 @@ export default function Offers({ tableData, departureDate }) {
         switch (type) {
             case 'link':
                 return (<a href={value}>link</a>);
+            case 'checkprice':
+                return (<CheckPrice reis_id={value.reis_id} />);
             default:
                 return value;
         }
