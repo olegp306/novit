@@ -60,8 +60,9 @@ export default function SearchHotel({
                         disabled
                     />
                 </div>
+
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col">
                         <Select name="destinationCountry" label="Sihtriik" options={destinationCountryOptions}
                             onChange={onChangeDestinationCountry}
                             value={destinationCountry}
@@ -78,40 +79,37 @@ export default function SearchHotel({
                 </div>
 
                 <div class="row">
-                    <div class="col"
-                    /*  style={{ display: "flex", justifyContent: "center", alignItems: "center" }}*/
-                    >
-                        <Calendar value={departureDate} onChange={onChangeDepartureDate} name="calendar" label="Kuupäev" inline highlightDates={calendarOptions} />
+                    <div class="col">
+                        <Calendar value={departureDate} onChange={onChangeDepartureDate} name="calendar" label="Kuupäev" highlightDates={calendarOptions} size="lg" />
+                        <Checkbox value={days} onChange={onChangeDays} name="days" label=" +/- 7 päeva" />
                     </div>
                     <div class="col">
-                        <Checkbox value={days} onChange={onChangeDays} name="days" label=" +/- 7 päeva" />
                         <RangeSlider value={period} onChange={onChangePeriod} name="period" start={6} end={15} min={1} max={30} marks label={"Ööde arv:"} />
-                        <RangeSlider value={price} onChange={onChangePrice} name="price" start={50} end={150} min={0} max={1000} step={100} marks label="Hind 1 täiskasvanu kohta:" />
-
+                        <RangeSlider value={price} onChange={onChangePrice} name="price" start={50} end={4000} min={0} max={5000} step={50} marks label="Hind 1 täiskasvanu kohta:" />
                     </div>
                 </div>
+
+
+
                 <div class="row">
                     <div class="col">
-                        <Select
-                            name="stars"
-                            value={stars}
-                            onChange={onChangeStars}
-                            label="Hotelli kategooria"
-                            options={hotelCategoryOptions}
-
-                        />
+                        <Select name="stars" value={stars} onChange={onChangeStars} label="Hotelli kategooria" options={hotelCategoryOptions} />
                     </div>
+
                     <div class="col">
+
                         <Select name="food" value={food} onChange={onChangeFood} label="Toitlustus:" options={foodOptions} />
                     </div>
                 </div>
-                <AutoComplete
-                    value={hotel}
-                    label={"Hotelli nimi:"}
-                    searchParams={{ country: destinationCountry, city: destinationCity, stars, hotel_name: hotel }}
-                    onChange={onChangeHotel}
-                />
+
             </div>
+
+            <AutoComplete
+                value={hotel}
+                label={"Hotelli nimi:"}
+                searchParams={{ country: destinationCountry, city: destinationCity, stars, hotel_name: hotel }}
+                onChange={onChangeHotel}
+            />
         </Form >
     )
 }
