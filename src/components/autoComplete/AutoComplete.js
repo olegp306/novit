@@ -4,7 +4,7 @@ import { Form } from 'react-bootstrap';
 import { AsyncTypeahead } from 'react-bootstrap-typeahead';
 import { fetchHotels } from '../../api';
 
-export default function AutoComplete({ value, label, onChange, searchParams }) {
+export default function AutoComplete({ value, label, onChange, searchParams, ...rest }) {
     // const [destinationCountry, destinationCity, stars, hotel] = searchParams;
     const [hotelOptions, setHotelOptions] = useState([])
     const [isLoading, setIsLoading] = useState(false);
@@ -44,8 +44,7 @@ export default function AutoComplete({ value, label, onChange, searchParams }) {
                 placeholder="Search for a hotels..."
                 renderMenuItemChildren={(option) =>
                     (<span key={option.value}>{option.name} {value}</span>)}
-            // (<span key={option.value}>{option.name}</span>)}
-            // (<span key={option.value}>{option.name.replace(value, '<b>' + value + '</b>')}</span>)}
+                {...rest}
             />
         </Form.Group>
     )
