@@ -3,13 +3,13 @@ const fetchCalendarUrl = `https://novit.ee/api/calendarFilter.php?option=allin`
 const fetchCitiesListUrl = `https://novit.ee/api/destinationCity.php?option=allin`
 const fetchOffersUrl = 'https://novit.ee/api/searchOffers.php?option=allin'
 const fetchHotelsUrl = `https://novit.ee/api/hotelAutofill.php?option=allin`
-const fetchActualPriceUrl= `https://novit.ee/wp-content/themes/astra/order/ajax_price_custom.php?option=allin`
+const fetchActualPriceUrl = `https://novit.ee/wp-content/themes/astra/order/ajax_price_custom.php?`
 
 
 
-const fetchDataAsync = async ({ url, params }) => {
+const fetchDataAsync = async ({ url, params, skipFirst }) => {
     try {
-        const response = await fetch(url + `&` + new URLSearchParams({
+        const response = await fetch(url + (skipFirst ? "" : `&`) + new URLSearchParams({
             ...params
         }));
         const data = await response.json();
@@ -31,4 +31,4 @@ export const fetchHotels = async (params) => fetchDataAsync({ url: fetchHotelsUr
 
 export const fetchOffers = async (params) => fetchDataAsync({ url: fetchOffersUrl, params })
 
-export const fetchActualPrice=async (params) => fetchDataAsync({ url: fetchActualPriceUrl, params })
+export const fetchActualPrice = async (params) => fetchDataAsync({ url: fetchActualPriceUrl, params, skipFirst: true })
