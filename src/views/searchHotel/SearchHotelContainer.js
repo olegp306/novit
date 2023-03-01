@@ -23,7 +23,7 @@ export default function SearchHotelContainer() {
 
 
     const [period, setPeriod] = useState([6, 15])
-    const [price, setPrice] = useState([50, 150])
+    const [price, setPrice] = useState([50, 5000])
 
     const [stars, setStars] = useState(6)
     const [food, setFood] = useState("")
