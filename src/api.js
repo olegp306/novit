@@ -1,12 +1,11 @@
-import testResponce from "./calendarResponce";
-
-
-
 const fetchDestinationCountriesUrl = `https://novit.ee/api/destinationCountry.php?option=allin`
 const fetchCalendarUrl = `https://novit.ee/api/calendarFilter.php?option=allin`
 const fetchCitiesListUrl = `https://novit.ee/api/destinationCity.php?option=allin`
 const fetchOffersUrl = 'https://novit.ee/api/searchOffers.php?option=allin'
 const fetchHotelsUrl = `https://novit.ee/api/hotelAutofill.php?option=allin`
+const fetchActualPriceUrl= `https://novit.ee/wp-content/themes/astra/order/ajax_price_custom.php?option=allin`
+
+
 
 const fetchDataAsync = async ({ url, params }) => {
     try {
@@ -32,3 +31,4 @@ export const fetchHotels = async (params) => fetchDataAsync({ url: fetchHotelsUr
 
 export const fetchOffers = async (params) => fetchDataAsync({ url: fetchOffersUrl, params })
 
+export const fetchActualPrice=async (params) => fetchDataAsync({ url: fetchActualPriceUrl, params })
