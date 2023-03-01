@@ -211,7 +211,7 @@ export default function SearchHotelContainer() {
             </div>
 
             <h1>offers</h1>
-            <Offers tableData={offers} />
+            <Offers tableData={offers}  departureDate={departureDate} />
 
         </>
     )
