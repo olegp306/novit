@@ -78,7 +78,9 @@ export default function SearchHotel({
                 </div>
 
                 <div class="row">
-                    <div class="col" style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+                    <div class="col"
+                    /*  style={{ display: "flex", justifyContent: "center", alignItems: "center" }}*/
+                    >
                         <Calendar value={departureDate} onChange={onChangeDepartureDate} name="calendar" label="Kuupäev" inline highlightDates={calendarOptions} />
                     </div>
                     <div class="col">
@@ -103,15 +105,6 @@ export default function SearchHotel({
                         <Select name="food" value={food} onChange={onChangeFood} label="Toitlustus:" options={foodOptions} />
                     </div>
                 </div>
-                {/* 
-                <Form.Group>
-                    <Form.Label>{"Hotelli nimi:"}</Form.Label>
-                    <Form.Control as="input" value={hotel} onChange={e => { onChangeHotel(e.target.value) }} autocomplete="on"
-                        renderItem={hotelOptions && hotelOptions.map(o => <option onClick={() => onChangeHotel(o?.label || o)} value={o?.value || o}>{o?.label || o}</option>)}
-                    >
-                    </Form.Control>
-                    <Form.Text className="text-muted">{""}</Form.Text>
-                </Form.Group> */}
                 <AutoComplete
                     value={hotel}
                     label={"Hotelli nimi:"}
