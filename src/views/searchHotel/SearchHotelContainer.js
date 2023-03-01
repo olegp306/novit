@@ -244,7 +244,7 @@ export default function SearchHotelContainer() {
             </div>
 
             <div className="d-grid gap-2">
-                <Button variant="primary" size="lg" onClick={searchOfferHandler} disabled={isOffersFetching}>
+                <Button variant="primary" size="lg" onClick={searchOfferHandler} disabled={isOffersFetching} className="mb-3" >
                     {isOffersFetching ? <Spinner /> : <span>OTSI REISI</span>}
                 </Button>
 
