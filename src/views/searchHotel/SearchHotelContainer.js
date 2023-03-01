@@ -3,8 +3,10 @@ import { Button } from 'react-bootstrap'
 import { fetchCalendar, fetchCities, fetchDestinationCountries, fetchHotels, fetchOffers, testurl } from '../../api'
 import FilterMark from '../../components/filterMark/FilterMark'
 import FilterWidget from '../../components/filterWidget/FilterWidget'
+import Notificator from '../../components/notificator/Notificator'
 import Offers from '../../components/offers/Offers'
 import Select from '../../components/select/Select'
+import Spinner from '../../components/spinner/Spinner'
 import { DefaultCity, DefaultCountry, foodOptions, countries, hotelCategoryOptions } from './constans'
 import SearchHotel from './SearchHotel'
 
@@ -40,7 +42,9 @@ export default function SearchHotelContainer() {
     const [adults, setAdults] = useState(2)
 
     const [offers, setOffers] = useState([])
+    const [isOffersFetching, setIsOffersFetching] = useState(false)
 
+    const [fetchErrors, setFetchErrors] = useState("")
 
 
     useEffect(() => {
@@ -85,6 +89,13 @@ export default function SearchHotelContainer() {
             // second
         }
     }, [hotel])
+
+    useEffect(() => {
+        setTimeout(() => setFetchErrors(""), 2000)
+        return () => {
+
+        }
+    }, [fetchErrors])
 
 
 
@@ -148,27 +159,31 @@ export default function SearchHotelContainer() {
         // unique
     })
 
-    const searchOfferHandler = () => {
+    const searchOfferHandler = async () => {
         const params = getUrlWithParams()
-        fetchOffers(params)
-            .then(offers => {
-                console.log("offers", offers)
-                setHotelOptions(offers)
-                // setIsLoading(false);
-            })
+        setIsOffersFetching(true)
 
+        // fetchOffers(params)
+        //     .then(offers => {
+        //         console.log("offers", offers)
+        //         setHotelOptions(offers)
+        //         // setIsLoading(false);
+        //     })
 
-        fetchOffers(params).then(data => {
-            console.log("fetchOffers", data)
-            setOffers(data)
-        })
+        try {
+            const result = await fetchOffers(params)
+            setOffers(result)
+            setIsOffersFetching(false)
+        } catch (error) {
+            setFetchErrors(error)
+        }
     }
 
 
     return (
         <>
             {/* // [depatureCity, destinationCountry, destinationCity, price, period, stars, food] */}
-            тут
+            {fetchErrors && <Notificator error={fetchErrors} />}
             <FilterWidget paramsArr={Object.keys(getUrlWithParams()).map(key => ({ value: getUrlWithParams()[key], label: key }))} />
             <SearchHotel
                 despatureCityOptions={despatureCityOptions}
@@ -229,15 +244,13 @@ export default function SearchHotelContainer() {
             </div>
 
             <div className="d-grid gap-2">
-                <Button variant="primary" size="lg" onClick={searchOfferHandler}>
-                    OTSI REISI
+                <Button variant="primary" size="lg" onClick={searchOfferHandler} disabled={isOffersFetching}>
+                    {isOffersFetching ? <Spinner /> : <span>OTSI REISI</span>}
                 </Button>
 
             </div>
 
-
-            <h1>offers</h1>
-            <Offers tableData={offers} departureDate={departureDate} adults={adults} children={children}/>
+            <Offers tableData={offers} departureDate={departureDate} adults={adults} children={children} isOffersFetching={isOffersFetching} />
 
         </>
     )
