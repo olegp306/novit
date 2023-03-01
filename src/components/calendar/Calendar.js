@@ -1,23 +1,26 @@
-import React, { useState } from 'react'
-import { Form } from 'react-bootstrap';
+import React, { useEffect, useState } from 'react'
+import { FloatingLabel, Form } from 'react-bootstrap';
 import ReactDatePicker from 'react-datepicker';
 
 
-export default function Calendar({ highlightDates, value, onChange, rest }) {
-    const [startDate, setStartDate] = useState(new Date());
+export default function Calendar({ highlightDates, value, label, onChange, rest }) {
     return (
         <Form.Group className="mb-3">
-            {value?.toLocaleDateString("en-US")}
             <ReactDatePicker
+                id="calendar"
+                openToDate={highlightDates?.sort((date1, date2) => date1 - date2)[0]}
                 selected={value || null}
                 onChange={onChange}
                 highlightDates={highlightDates || []}
-                placeholderText="This highlights a week ago and a week from today"
                 inline
-                // value={value}
+                placeholderText={label}
+                label={label}
+                className="form-control"
                 {...rest}
             />
-        </Form.Group>
+
+
+        </Form.Group >
     );
 };
 
