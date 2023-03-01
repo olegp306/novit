@@ -41,7 +41,7 @@ export default function SearchHotelContainer() {
 
     const [adults, setAdults] = useState(2)
 
-    const [offers, setOffers] = useState([])
+    const [offers, setOffers] = useState(null)
     const [isOffersFetching, setIsOffersFetching] = useState(false)
 
     const [fetchErrors, setFetchErrors] = useState("")

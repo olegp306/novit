@@ -15,15 +15,19 @@ const columns =
         { value: "checkprice", label: "checkprice", type: "checkprice" },
         { value: "room_type", label: "Toatüüp" },
 
-        { value: "URLcheapestOffer", label: "URL (kõige odavam pakkumine)", type: "link" },
-        { value: "URLofferWithPriceAndDates", label: " URL (kuupäev + ööde arv)", type: "link" },
+        { value: "URLcheapestOffer", label: "kõige odavam pakkumine", type: "link" },
+        { value: "URLofferWithPriceAndDates", label: "kuupäev + ööde arv", type: "link" },
         { value: "ReisUrl", label: "Reis URL", type: "link" },
+
         { value: "agency", label: "Reisikorraldaja" },
 
     ]
 
 export default function Offers({ tableData, departureDate, adults, children, isOffersFetching }) {
 
+    if (tableData==null) {
+        return <></>
+    }
 
     if (!tableData.length > 0) {
         return <>no data found</>
