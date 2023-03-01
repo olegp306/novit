@@ -6,7 +6,7 @@ import ReactDatePicker from 'react-datepicker';
 export default function Calendar({ highlightDates, value, label, onChange, ...rest }) {
     return (
         <Form.Group className="mb-3" style={{ width: "auto" }}>
-            <Form.Label>{label}</Form.Label>
+            <Form.Label style={{color:"#777b7e"}}>{label}</Form.Label>
             <ReactDatePicker
                 id="calendar"
                 openToDate={highlightDates?.sort((date1, date2) => date1 - date2)[0]}

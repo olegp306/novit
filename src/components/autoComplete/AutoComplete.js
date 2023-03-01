@@ -28,7 +28,7 @@ export default function AutoComplete({ value, label, onChange, searchParams, ...
 
     return (
         <Form.Group className="mb-3" >
-            <Form.Label>{label}</Form.Label>
+            <Form.Label style={{color:"#777b7e"}}>{label}</Form.Label>
             <AsyncTypeahead
                 id="async-example"
                 filterBy={filterBy}
