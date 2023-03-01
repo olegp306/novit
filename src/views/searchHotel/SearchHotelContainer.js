@@ -132,7 +132,7 @@ export default function SearchHotelContainer() {
         country: destinationCountry,
         city: destinationCity,
         departure_date: departureDate?.toLocaleDateString("en-US"),
-        days: days,
+        days: days ? "on" : "off",
         period: `${period[0]}-${period[1]}`,
         stars,
         hotel_name: hotel,
@@ -211,7 +211,7 @@ export default function SearchHotelContainer() {
             </div>
 
             <h1>offers</h1>
-            <Offers tableData={offers} />
+             <Offers tableData={offers} />
 
         </>
     )
