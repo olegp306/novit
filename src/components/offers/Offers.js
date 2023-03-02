@@ -27,6 +27,7 @@ const columns =
 export default function Offers({ tableData, departureDate, adults, children, isOffersFetching }) {
 
     const [selectedOffers, setSelectedOffers] = useState({})
+    const [isShowingSelectedOnly, setIsShowingSelectedOnly] = useState(false)
 
     if (tableData == null) {
         return <></>
@@ -38,25 +39,24 @@ export default function Offers({ tableData, departureDate, adults, children, isO
 
     const prepareTableData = (data) =>
         data.map(({ hotel_id, reis_id, duration, price, ...rest }, index) => ({
+            id: index,
             isChecked: index,
             URLcheapestOffer: `https://novit.ee/hotell/?hotel_id=${hotel_id}`,
             URLofferWithPriceAndDates: `https://novit.ee/hotell/?hotel_id=${hotel_id}&departure_date=${departureDate}&duration=${duration}`,
             ReisUrl: `https://novit.ee/otsing/paring/?reis_id=${reis_id}`,
             checkprice: { reis_id, adults, children },
             price: price * adults,
+            duration,
             ...rest
 
         }))
-
-
-    const priparedData = prepareTableData(tableData);
 
     const onCheckRowHandler = (index) => {
         const newSelected = Object.assign({}, selectedOffers);
         newSelected[index] = !newSelected[index]
         setSelectedOffers(newSelected)
 
-        console.log("newSelected",newSelected)
+        console.log("newSelected", newSelected)
     }
 
     const renderCellByType = ({ value, type }) => {
@@ -72,26 +72,29 @@ export default function Offers({ tableData, departureDate, adults, children, isO
         }
     }
 
+    const priparedData = isShowingSelectedOnly ? prepareTableData(tableData).filter(row => selectedOffers[row.id]) : prepareTableData(tableData);
+
     return (
-        <Table striped bordered hover>
-            <thead>
-                <tr>
-                    {/* {Object.keys(priparedData[0]).map(key => <th>{key}</th>)} */}
-                    {columns.map(c => <th>{c.label}</th>)}
-                </tr>
-            </thead>
-            <tbody>
-
-                {priparedData.map(row =>
+        <>
+            <FormCheck label="show only selected" checked={isShowingSelectedOnly} onChange={() => setIsShowingSelectedOnly(!isShowingSelectedOnly)} />
+            <Table striped bordered hover>
+                <thead>
                     <tr>
-                        {/* {Object.keys(row).map(key => <td>{row[key]}</td>)} */}
-                        {columns.map(c =>
-                            <td>{renderCellByType({ value: row[c.value], type: c.type })}</td>
-                        )}
-
+                        {columns.map((c, index) => <th key={index}>{c.label}</th>)}
                     </tr>
-                )}
-            </tbody>
-        </Table>
+                </thead>
+                <tbody>
+
+                    {priparedData.map((row, index) =>
+                        <tr key={index}>
+                            {columns.map((c, index) =>
+                                <td key={index}>{renderCellByType({ value: row[c.value], type: c.type })}</td>
+                            )}
+
+                        </tr>
+                    )}
+                </tbody>
+            </Table>
+        </>
     )
 }
