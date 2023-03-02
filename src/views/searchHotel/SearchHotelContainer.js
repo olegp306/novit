@@ -14,7 +14,6 @@ export default function SearchHotelContainer() {
     const [despatureCityOptions, setDespatureCityOptions] = useState(["Tallinn"])
     const [depatureCity, setDepatureCity] = useState(DefaultCity)
 
-
     const [destinationCountryOptions, setDestinationCountryOptions] = useState(countries)
     const [destinationCountry, setDestinationCountry] = useState(DefaultCountry)
 
@@ -155,20 +154,13 @@ export default function SearchHotelContainer() {
         hotel_name: hotel,
         price: `${price[0]}-${price[1]}`,
         // room_pansion,
-        limit: 10,
+        limit: 100,
         // unique
     })
 
     const searchOfferHandler = async () => {
         const params = getUrlWithParams()
         setIsOffersFetching(true)
-
-        // fetchOffers(params)
-        //     .then(offers => {
-        //         console.log("offers", offers)
-        //         setHotelOptions(offers)
-        //         // setIsLoading(false);
-        //     })
 
         try {
             const result = await fetchOffers(params)
@@ -179,10 +171,20 @@ export default function SearchHotelContainer() {
         }
     }
 
+    const urlWithParams = getUrlWithParams()
+
 
     return (
         <>
-            {/* // [depatureCity, destinationCountry, destinationCity, price, period, stars, food] */}
+            <div style={{ display: "flex" }}>
+                <a href="https://novit.ee/" class="mb-2" rel="home" aria-current="page">
+                    <img width="250" height="83" src="https://novit.ee/wp-content/uploads/2022/09/cropped-logo2018.png" class="custom-logo" alt="Nov IT" />
+                </a>
+                <div style={{ display: "flex", flexWrap: "wrap", marginLeft: "20px" }}>
+                    {Object.keys(urlWithParams).map(key => (<FilterMark label={key} value={urlWithParams[key]} />))}
+                </div>
+            </div>
+
             {fetchErrors && <Notificator error={fetchErrors} />}
             <FilterWidget paramsArr={Object.keys(getUrlWithParams()).map(key => ({ value: getUrlWithParams()[key], label: key }))} />
             <SearchHotel
@@ -249,7 +251,10 @@ export default function SearchHotelContainer() {
                 </Button>
 
             </div>
-
+{/* 
+            <div style={{ display: "flex", flexWrap: "wrap", marginBottom:'10px' }}>
+                {Object.keys(urlWithParams).map(key => (<FilterMark label={key} value={urlWithParams[key]} />))}
+            </div> */}
             <Offers tableData={offers} departureDate={departureDate} adults={adults} children={children} isOffersFetching={isOffersFetching} />
 
         </>

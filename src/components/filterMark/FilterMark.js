@@ -2,15 +2,13 @@ import React from 'react'
 
 export default function FilterMark({ label, value, ...rest }) {
     return (
-        <>
-            <span style={{ position: "absolute", left: "10", fontSize: "12px", color: "white" }}>
+        <div style={{ margin: "2px", padding: "0px 15px 0px 10px", height: "50px", minWidth: "80px", borderRadius: "15px", backgroundColor: "darkgray", color: "white" }}        >
+            <span style={{  fontSize: "12px", color: "white" }}>
                 {label}
             </span>
-            <span
-                style={{ margin: "5px", padding: "5px 10px", borderRadius: "15px", backgroundColor: "darkgray", color: "white" }}
-                {...rest}>
+            <div style={{ display: "flex", alignItems: "stretch", marginTop:"-5px" }}>
                 {value}
-            </span>
-        </>
+            </div>
+        </div>
     )
 }
