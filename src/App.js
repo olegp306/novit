@@ -5,11 +5,9 @@ import SearchHotelContainer from './views/searchHotel/SearchHotelContainer';
 
 function App() {
   return (
-    <Container >
       <Container className="mb-3 bg-light rounded-3" style={{ padding: "10px 40px" }}>
         <SearchHotelContainer />
       </Container>
-    </Container >
   );
 }
 
