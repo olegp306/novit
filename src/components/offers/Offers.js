@@ -1,10 +1,11 @@
-import React from 'react'
-import { Table } from 'react-bootstrap'
+import React, { useState } from 'react'
+import { FormCheck, Table } from 'react-bootstrap'
 import CheckPrice from './components/CheckPrice'
 
 
 const columns =
     [
+        { value: "isChecked", label: "#", type: "checkbox" },
         { value: "country", label: "Riik" },
         { value: "city", label: "Linn" },
         { value: "hotel_name", label: "Hotell - Kategooria" },
@@ -25,7 +26,9 @@ const columns =
 
 export default function Offers({ tableData, departureDate, adults, children, isOffersFetching }) {
 
-    if (tableData==null) {
+    const [selectedOffers, setSelectedOffers] = useState({})
+
+    if (tableData == null) {
         return <></>
     }
 
@@ -34,7 +37,8 @@ export default function Offers({ tableData, departureDate, adults, children, isO
     }
 
     const prepareTableData = (data) =>
-        data.map(({ hotel_id, reis_id, duration, price, ...rest }) => ({
+        data.map(({ hotel_id, reis_id, duration, price, ...rest }, index) => ({
+            isChecked: index,
             URLcheapestOffer: `https://novit.ee/hotell/?hotel_id=${hotel_id}`,
             URLofferWithPriceAndDates: `https://novit.ee/hotell/?hotel_id=${hotel_id}&departure_date=${departureDate}&duration=${duration}`,
             ReisUrl: `https://novit.ee/otsing/paring/?reis_id=${reis_id}`,
@@ -47,12 +51,22 @@ export default function Offers({ tableData, departureDate, adults, children, isO
 
     const priparedData = prepareTableData(tableData);
 
+    const onCheckRowHandler = (index) => {
+        const newSelected = Object.assign({}, selectedOffers);
+        newSelected[index] = !newSelected[index]
+        setSelectedOffers(newSelected)
+
+        console.log("newSelected",newSelected)
+    }
+
     const renderCellByType = ({ value, type }) => {
         switch (type) {
             case 'link':
                 return (<a href={value}>link</a>);
             case 'checkprice':
                 return (<CheckPrice reis_id={value.reis_id} />);
+            case 'checkbox':
+                return (<FormCheck checked={selectedOffers[value]} onChange={() => onCheckRowHandler(value)} />);
             default:
                 return value;
         }
@@ -77,7 +91,6 @@ export default function Offers({ tableData, departureDate, adults, children, isO
 
                     </tr>
                 )}
-
             </tbody>
         </Table>
     )
