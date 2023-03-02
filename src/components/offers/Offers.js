@@ -76,7 +76,7 @@ export default function Offers({ tableData, departureDate, adults, children, isO
 
     return (
         <>
-            <FormCheck label="show only selected" checked={isShowingSelectedOnly} onChange={() => setIsShowingSelectedOnly(!isShowingSelectedOnly)} />
+            <FormCheck label="näita ainult valitud" checked={isShowingSelectedOnly} onChange={() => setIsShowingSelectedOnly(!isShowingSelectedOnly)} />
             <Table striped bordered hover>
                 <thead>
                     <tr>
