@@ -7,38 +7,38 @@ import Notificator from '../../components/notificator/Notificator'
 import Offers from '../../components/offers/Offers'
 import Select from '../../components/select/Select'
 import Spinner from '../../components/spinner/Spinner'
-import { DefaultCity, DefaultCountry, foodOptions, countries, hotelCategoryOptions } from './constans'
+import { DefaultCity, DefaultCountry, foodOptions, countries, hotelCategoryOptions, defaultValues } from './constans'
 import SearchHotel from './SearchHotel'
 
 export default function SearchHotelContainer() {
     const [despatureCityOptions, setDespatureCityOptions] = useState(["Tallinn"])
-    const [depatureCity, setDepatureCity] = useState(DefaultCity)
+    const [depatureCity, setDepatureCity] = useState(defaultValues.depatureCity)
 
     const [destinationCountryOptions, setDestinationCountryOptions] = useState(countries)
-    const [destinationCountry, setDestinationCountry] = useState(DefaultCountry)
+    const [destinationCountry, setDestinationCountry] = useState(defaultValues.destinationCountry)
 
     const [destinationCityOptions, setDestinationCityOptions] = useState([])
-    const [destinationCity, setDestinationCity] = useState("--Kõik--")
+    const [destinationCity, setDestinationCity] = useState(defaultValues.destinationCity)
 
     const [calendarOptions, setCalendarOptions] = useState(null)
     const [departureDate, setDepartureDate] = useState(null)
 
 
-    const [period, setPeriod] = useState([6, 15])
-    const [price, setPrice] = useState([50, 5000])
+    const [period, setPeriod] = useState(defaultValues.period)
+    const [price, setPrice] = useState(defaultValues.price)
 
-    const [stars, setStars] = useState(6)
+    const [stars, setStars] = useState(defaultValues.stars)
     const [food, setFood] = useState("")
 
     const [hotelOptions, setHotelOptions] = useState([])
     const [hotel, setHotel] = useState("")
 
-    const [days, setDays] = useState(false)
+    const [days, setDays] = useState(defaultValues.days)
 
 
-    const [children, setChildren] = useState(0)
+    const [children, setChildren] = useState(defaultValues.children)
 
-    const [adults, setAdults] = useState(2)
+    const [adults, setAdults] = useState(defaultValues.adults)
 
     const [offers, setOffers] = useState(null)
     const [isOffersFetching, setIsOffersFetching] = useState(false)
@@ -154,7 +154,7 @@ export default function SearchHotelContainer() {
         hotel_name: hotel,
         price: `${price[0]}-${price[1]}`,
         // room_pansion,
-        limit: 100,
+        limit: defaultValues.limit,
         // unique
     })
 

@@ -38,6 +38,17 @@ export const countries = [
 ]
 
 
-export const DefaultCity = "Tallinn"
-export const DefaultCountry = "Türgi"
+export const defaultValues={
+    depatureCity: "Tallinn",
+    destinationCountry:"Türgi",
+    destinationCity:"--Kõik--",
+    period:[6, 15],
+    price:[50, 5000],
+    stars:6,
+    days:false,
+    children:0,
+    adults:2,
+    limit:100,
+
+}
 
